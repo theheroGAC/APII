@@ -1,0 +1,67 @@
+[
+	{
+		"id": "ENGLISH_US",
+		"version": "1.00",
+		"author": "gdljjrod"
+	},
+	{
+		"id": "SPANISH",
+		"version": "1.00",
+		"author": "gdljjrod"
+	},
+	{
+		"id": "CHINESE_S",
+		"version": "1.00",
+		"author": "??"
+	},
+	{
+		"id": "CHINESE_T",
+		"version": "1.00",
+		"author": "??"
+	},
+	{
+		"id": "DUTCH",
+		"version": "1.00",
+		"author": "??"
+	},
+	{
+		"id": "FRENCH",
+		"version": "1.00",
+		"author": "??"
+	},
+	{
+		"id": "GERMAN",
+		"version": "1.00",
+		"author": "??"
+	},
+	{
+		"id": "ITALIAN",
+		"version": "1.00",
+		"author": "TheHeroeGAC"
+	},
+	{
+		"id": "JAPANESE",
+		"version": "1.00",
+		"author": "??"
+	},
+	{
+		"id": "POLISH",
+		"version": "1.00",
+		"author": "??"
+	},
+	{
+		"id": "PORTUGUESE_BR",
+		"version": "1.00",
+		"author": "??"
+	},
+	{
+		"id": "RUSSIAN",
+		"version": "1.00",
+		"author": "??"
+	},
+	{
+		"id": "TURKISH",
+		"version": "1.00",
+		"author": "??"
+	}
+]
