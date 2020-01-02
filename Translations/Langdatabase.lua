@@ -1,0 +1,15 @@
+Langs = {
+{ id =  "CHINESE_S",		version = "01.00",		author =  "??" },
+{ id =  "CHINESE_T",		version = "01.00",		author =  "??" },
+{ id =  "DUTCH",		version = "01.00",		author =  "??" },
+{ id =  "ENGLISH_US",		version = "01.00",		author =  "gdljjrod" },
+{ id =  "FRENCH",		version = "01.00",		author =  "??" },
+{ id =  "GERMAN",		version = "01.00",		author =  "??" },
+{ id =  "ITALIAN",		version = "01.00",		author =  "TheHeroeGAC" },
+{ id =  "JAPANESE",		version = "01.00",		author =  "??" },
+{ id =  "POLISH",		version = "01.00",		author =  "??" },
+{ id =  "PORTUGUESE_BR",		version = "01.00",		author =  "??" },
+{ id =  "RUSSIAN",		version = "01.00",		author =  "??" },
+{ id =  "SPANISH",		version = "01.00",		author =  "gdljjrod" },
+{ id =  "TURKISH",		version = "01.00",		author =  "??" },
+}
