@@ -1,3 +1,14 @@
+--[[ 
+	Autoinstall plugin
+
+	Licensed by Creative Commons Attribution-ShareAlike 4.0
+	http://creativecommons.org/licenses/by-sa/4.0/
+	
+	Dev: TheHeroGAC
+	Designed By Gdljjrod & DevDavisNunez.
+	Collaborators: BaltazaR4 & Wzjk.
+]]
+
 Online_Plugins = {
 
 --Kernel
