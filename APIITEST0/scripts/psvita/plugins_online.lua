@@ -59,7 +59,7 @@ function plugins_online2()
 
 	local tmpss = {}
 
-	if http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/Plugins/plugins.lua", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/plugins/plugins.lua") then
+	if http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/plugins/plugins.lua", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/plugins/plugins.lua") then
 		dofile("ux0:data/AUTOPLUGIN2/plugins/plugins.lua")
 	else
 		os.message(LANGUAGE["LANG_ONLINE_FAILDB"])
