@@ -30,7 +30,7 @@ function lang_online()
 
 	local tmpss = {}
 
-	if http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/Translations/Langdatabase.lua", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua") then
+	if http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/Translations/Langdatabase.lua", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua") then
 		dofile("ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua")
 	else
 		os.message(LANGUAGE["LANG_ONLINE_FAILDB"])
@@ -46,7 +46,7 @@ function lang_online()
 				if string.upper(Langs[i].id) == string.upper(Online_Langs[j].id) then
 					if tonumber(Langs[i].version) < tonumber(Online_Langs[j].version) then
 						--if os.message("bajar si o no ?\n"..Online_Langs[j].id,1) == 1 then
-						if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/Translations/%s.lua", APP_REPO, APP_PROJECT, Online_Langs[j].id), "lang/")) then
+						if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/Translations/%s.lua", APP_REPO, APP_PROJECT, Online_Langs[j].id), "lang/")) then
 							if back2 then back2:blit(0,0) end
 								message_wait(LANGUAGE["STRING_INSTALLED"].."\n\n"..Online_Langs[j].id.."\n")
 							os.delay(750)
@@ -77,7 +77,7 @@ function lang_online()
 		end
 		if not __find then
 			--if os.message("BBajar si o no ?\n"..Online_Langs[i].id,1) == 1 then
-			if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/Translations/%s.lua", APP_REPO, APP_PROJECT, Online_Langs[i].id), "lang/")) then
+			if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/Translations/%s.lua", APP_REPO, APP_PROJECT, Online_Langs[i].id), "lang/")) then
 				if back2 then back2:blit(0,0) end
 					message_wait(LANGUAGE["STRING_INSTALLED"].."\n\n"..Online_Langs[i].id)
 				os.delay(750)

@@ -130,7 +130,7 @@ function change_lang()
 				if back then back:blit(0,0) end
 					message_wait(LANGUAGE["LANGUAGE_RELOAD"])
 				os.delay(1500)
-				
+
 				if __LANG == "CHINESE_T" or __LANG == "CHINESE_S" or __LANG == "TURKISH" then
 					if not files.exists("ux0:data/AUTOPLUGIN2/font/font.pgf") then
 						message_wait(CHINESE_FONT_DOWNLOAD)
