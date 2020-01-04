@@ -1,14 +1,3 @@
---[[ 
-	Autoinstall plugin
-
-	Licensed by Creative Commons Attribution-ShareAlike 4.0
-	http://creativecommons.org/licenses/by-sa/4.0/
-	
-	Dev: TheHeroGAC
-	Designed By Gdljjrod & DevDavisNunez.
-	Collaborators: BaltazaR4 & Wzjk.
-]]
-
 Online_Plugins = {
 
 --Kernel
@@ -53,6 +42,8 @@ Online_Plugins = {
 { name = "PSVshell by Electry v1.1", path = "PSVshell.skprx", section = "KERNEL",  version = "0001", desc = LANGUAGE["INSTALLP_DESC_PSVSHELL"], KEY = "INSTALLP_DESC_PSVSHELL", },
 { name = "0syscall6 by SKGleba v1.2", path = "0syscall6.skprx", section = "KERNEL",  version = "0001", desc = LANGUAGE["INSTALLP_DESC_SYSCALL6"], KEY = "INSTALLP_DESC_SYSCALL6", },
 { name = "Monaural by cuevavirus v1.0.0", path = "monaural.skprx", section = "KERNEL",  version = "0001", desc = LANGUAGE["INSTALLP_DESC_MONAURAL"], KEY = "INSTALLP_DESC_MONAURAL", },
+{ name = "DolcePolce by SilicaAndPina v1.0", path = "DolcePolce.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_DOLCEPOLCE"], KEY = "INSTALLP_DESC_DOLCEPOLCE", },
+{ name = "LowMemMode by GrapheneCt v1.0", path = "LowMemMode.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_LOWMEMMODE"], KEY = "INSTALLP_DESC_LOWMEMMODE", },
 
 --Boot_config.txt
 { name = "Custom Boot Splash by Princess of Sleeping", path = "custom_boot_splash.skprx", section = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_CUSTOMBOOTSPLASH"], KEY = "INSTALLP_DESC_CUSTOMBOOTSPLASH", },
