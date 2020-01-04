@@ -42,8 +42,6 @@ Online_Plugins = {
 { name = "PSVshell by Electry v1.1", path = "PSVshell.skprx", section = "KERNEL",  version = "0001", desc = LANGUAGE["INSTALLP_DESC_PSVSHELL"], KEY = "INSTALLP_DESC_PSVSHELL", },
 { name = "0syscall6 by SKGleba v1.2", path = "0syscall6.skprx", section = "KERNEL",  version = "0001", desc = LANGUAGE["INSTALLP_DESC_SYSCALL6"], KEY = "INSTALLP_DESC_SYSCALL6", },
 { name = "Monaural by cuevavirus v1.0.0", path = "monaural.skprx", section = "KERNEL",  version = "0001", desc = LANGUAGE["INSTALLP_DESC_MONAURAL"], KEY = "INSTALLP_DESC_MONAURAL", },
-{ name = "DolcePolce by SilicaAndPina v1.0", path = "DolcePolce.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_DOLCEPOLCE"], KEY = "INSTALLP_DESC_DOLCEPOLCE", },
-{ name = "LowMemMode by GrapheneCt v1.0", path = "LowMemMode.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_LOWMEMMODE"], KEY = "INSTALLP_DESC_LOWMEMMODE", },
 
 --Boot_config.txt
 { name = "Custom Boot Splash by Princess of Sleeping", path = "custom_boot_splash.skprx", section = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_CUSTOMBOOTSPLASH"], KEY = "INSTALLP_DESC_CUSTOMBOOTSPLASH", },
@@ -62,7 +60,8 @@ Online_Plugins = {
 { name = "Autoboot by Rinnegatamante v1.2 (only for 3.60/3.65)", path = "AutoBoot.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_AUTOBOOT"], KEY = "INSTALLP_DESC_AUTOBOOT", },
 { name = "Vitacompanion by devnoname120 v1.00", path = "vitacompanion.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VITACOMPA"], KEY = "INSTALLP_DESC_VITACOMPA", },
 { name = "volume_profile by cuevavirus v1.1.1", path = "jav.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VOLUPROF"], KEY = "INSTALLP_DESC_VOLUPROF", },
-{ name = "DolcePolce by SilicaAndPina v1.0", path = "DolcePolce.suprx", section = "main",  version = "0001", desc = LANGUAGE["INSTALLP_DESC_DOLCEPOLCE"], KEY = "INSTALLP_DESC_DOLCEPOLCE", },
+{ name = "DolcePolce by SilicaAndPina v1.0", path = "DolcePolce.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_DOLCEPOLCE"], KEY = "INSTALLP_DESC_DOLCEPOLCE", },
+{ name = "LowMemMode by GrapheneCt v1.0", path = "LowMemMode.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_LOWMEMMODE"], KEY = "INSTALLP_DESC_LOWMEMMODE", },
 
 --All
 { name = "PSV-VSH MENU by joel16 v3.4", path = "vsh.suprx", section = "ALL",  path2 = "kuio.skprx", section2 = "KERNEL",  version = "0001", desc = LANGUAGE["INSTALLP_DESC_VSHMENU"], KEY = "INSTALLP_DESC_VSHMENU", },-- Need kuio.skprx
