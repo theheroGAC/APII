@@ -29,8 +29,8 @@ ENGLISH_US["MENU_PSVITA_CHECK_ONLINE_PLUGINS"] =		"Check for Plugin Updates"
 
 ENGLISH_US["MENU_PSVITA_INSTALL_PLUGINS_DESC"] =		"Install the most useful Plugins made by SCENE-PSVITA"
 ENGLISH_US["MENU_PSVITA_UNINSTALL_PLUGINS_DESC"] =		"Uninstall plugins easily and simply"
-ENGLISH_US["MENU_PSVITA_INSTALL_SD2VITA_DESC"] =		"Install Plugin SD2VITA (StorageMgr by CelesteBlue)"
-ENGLISH_US["MENU_PSVITA_CONFIG_SD2VITA_DESC"] =			"Configure Plugin SD2VITA (StorageMgr by CelesteBlue)"
+ENGLISH_US["MENU_PSVITA_INSTALL_SD2VITA_DESC"] =		"Install Plugin SD2VITA (StorageMgr v3.2 by CelesteBlue)"
+ENGLISH_US["MENU_PSVITA_CONFIG_SD2VITA_DESC"] =			"Configure Plugin SD2VITA (StorageMgr v3.2 by CelesteBlue)"
 ENGLISH_US["MENU_PSVITA_CHECK_ONLINE_PLUGINS_DESC"] =	"Check if there are new updated plugins"
 
 --Options PSP
@@ -124,9 +124,6 @@ ENGLISH_US["UPDATE_CHECK_DB"] =							"Checking Database"
 ENGLISH_US["UPDATE_PLUGIN"] =							"Updated Plugin"
 ENGLISH_US["UPDATE_ERROR_DB"] =							"Error downloading db.lua"
 ENGLISH_US["UPDATE_NO_NEWS"] =							"All the plugins are up to date"
-ENGLISH_US["UPDATE_VITACHEAT_DB"] =						"Update Cheats db for Vitacheat?"
-ENGLISH_US["UPDATE_VITACHEAT_DB_WRITE"] =				"The files will be overwritten!"
-ENGLISH_US["UPDATE_CHECK_VITACHEAT_DB"] =				"Checking Vitacheat Database"
 
 --npdrm free
 ENGLISH_US["NPDRMFREE_TITLE"] =							"Install NPDRM FREE plugin from qwikrazor87"
@@ -182,28 +179,28 @@ ENGLISH_US["TRANSLATION_SAVED_2"] =						"Upload this file on the Autoplugin II 
 ENGLISH_US["NOTHING_TO_TRANSLATE"] =					"Thank you for you interest, but there is nothing to translate right now!"
 
 --Lang Online
-ENGLISH_US["MENU_TITLE_LANG_ONLINE"] =					"Idiomas Disponibles"
-ENGLISH_US["MENU_TITLE_LANGUAGE"] =						"Seleccionar Idioma"
-ENGLISH_US["LANGUAGE_RELOAD"] =							"El idioma ha sido cambiado"
-ENGLISH_US["LANGUAGE_NO_UPDATE"] =						"No hay actualización de idiomas disponibles"
-ENGLISH_US["PLUGINS_NO_ONLINE"] =						"No hay actualización de plugins disponibles"
+ENGLISH_US["MENU_TITLE_LANG_ONLINE"] =					"Available languages"
+ENGLISH_US["MENU_TITLE_LANGUAGE"] =						"Select language"
+ENGLISH_US["LANGUAGE_RELOAD"] =							"The language has been changed"
+ENGLISH_US["LANGUAGE_NO_UPDATE"] =						"There is no available languages updates"
+ENGLISH_US["PLUGINS_NO_ONLINE"] =						"There is no available plugins updates"
 ENGLISH_US["LANG_UPDATE"] =								"UPDATE"
-ENGLISH_US["LANG_ONLINE_FAILDB"] =						"Error al decodificar Langdatabase"
-ENGLISH_US["LANG_ONLINE_FAIL_CONEXION"] =				"Error en la conexión"
-ENGLISH_US["LANG_FILE_UPDATE"] =						"Actualizado"
-ENGLISH_US["LANG_FILE_NEW"] =							"Nuevo"
-ENGLISH_US["LANG_INSTALL_ALL"] =						"Instalar todos"
+ENGLISH_US["LANG_ONLINE_FAILDB"] =						"Error decoding Langdatabase"
+ENGLISH_US["LANG_ONLINE_FAIL_CONEXION"] =				"Connection error"
+ENGLISH_US["LANG_FILE_UPDATE"] =						"Updated"
+ENGLISH_US["LANG_FILE_NEW"] =							"New"
+ENGLISH_US["LANG_INSTALL_ALL"] =						"Install all languages"
 ENGLISH_US["MARK_LANGS"] =								"Mark/Unmark Lang(s)"
 ENGLISH_US["CLEAN_LANGS"] =								"To clean selected Langs"
 
 --Plugins Online
-ENGLISH_US["MENU_TITLE_PLUGINS_ONLINE"] =				"Actualización de Plugins"
+ENGLISH_US["MENU_TITLE_PLUGINS_ONLINE"] =				"Plugins updates"
 
 --Langs
 ENGLISH_US["JAPANESE"] =								"JAPANESE"
 ENGLISH_US["ENGLISH_US"] =								"ENGLISH_US"
 ENGLISH_US["FRENCH"] =									"FRENCH"
-ENGLISH_US["SPANISH"] =									"ESPAÑOL"
+ENGLISH_US["SPANISH"] =									"SPANISH"
 ENGLISH_US["GERMAN"] =									"GERMAN"
 ENGLISH_US["ITALIAN"] =									"ITALIAN"
 ENGLISH_US["DUTCH"]	=									"DUTCH"
@@ -274,6 +271,7 @@ ENGLISH_US["INSTALLP_DESC_NOFINDSPLASH"] =				"Place the image of your choice at
 ENGLISH_US["INSTALLP_DESC_SPLASHGH"] =					"The size of the image should be: 960 * 544"
 ENGLISH_US["INSTALLP_DESC_BOOTSPLASH_DONE"] =			"boot_splash.bin DONE !!!"
 ENGLISH_US["INSTALLP_DESC_BOOTSPLASH_FAIL"] =			"boot_splash.bin FAIL !!!"
+
 --Main
 ENGLISH_US["INSTALLP_DESC_DENABLER"] =					"Download files through your browser"
 ENGLISH_US["INSTALLP_DESC_NOLOCKSCREEN"] =				"Disables the lockscreen found on the PSVita"
