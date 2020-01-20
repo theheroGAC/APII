@@ -292,6 +292,9 @@ SPANISH["INSTALLP_DESC_VITACOMPA"] =					"Plugin que facilita el desarrollo de h
 SPANISH["INSTALLP_DESC_VOLUPROF"] =						"Automatically switch between your preferred speaker and headphone volumes."
 SPANISH["INSTALLP_DESC_DOLCEPOLCE"] =					"Removes PSTV Blacklist Checks (VITA/PSP/PS1/PSM)"
 SPANISH["INSTALLP_DESC_LOWMEMMODE"] =					"Launch system applications with enlarged memory game in the background"
+SPANISH["INSTALLP_DESC_QUICKPOWER"] =					"Power off, reboot, and suspend, all from the quick menu. For both Playstation Vita and Playstation TV. Hold the Power Off button to reboot."
+SPANISH["INSTALLP_DESC_QUICKVOLUME"] =					"Change volume from the quick menu on the Playstation Vita, just like on the Playstation TV."
+SPANISH["INSTALLP_DESC_QASCREEN"] =				    	"High quality screenshot plugin for PS Vita. Unlocks native QA screenshot SceShell implementation."																																												  
 
 --ALL
 SPANISH["INSTALLP_DESC_VSHMENU"] =						"Un plugin con un menú estilo VHS para los juegos PS Vita y Homebrews"
