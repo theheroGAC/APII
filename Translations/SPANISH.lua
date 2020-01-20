@@ -56,7 +56,7 @@ SPANISH["MENU_EXTRAS_TRANSLATE_DESC"] =					"¡Ayuda a mejorar Autoplugin II tra
 
 --Options Settings
 SPANISH["MENU_SETTINGS_LANG_ONLINE"] =					"Descargar Idiomas Disponibles"
-SPANISH["MENU_SETTINGS_ENABLE_AUTOUPDATE"] =			"Enable AutoUpdate: "
+SPANISH["MENU_SETTINGS_ENABLE_AUTOUPDATE"] =			"Habilitar AutoUpdate: "
 SPANISH["MENU_SETTINGS_CHANGE_LANGUAGE"] =				"Cambiar Idioma"
 
 SPANISH["MENU_SETTINGS_LANG_ONLINE_DESC"] =				"Descarga paquetes de idiomas disponibles para Autoplugin II"
@@ -86,6 +86,7 @@ SPANISH["UNINSTALLP_TITLE"] =							"Administrador de Plugins"
 SPANISH["UNINSTALLP_NOCONFIG_FOUND"] =					"No se encontró config.txt en: "
 SPANISH["UNINSTALLP_PLUGIN"] =							"Para desinstalar Plugin"
 SPANISH["UNINSTALLP_LEFTRIGHT_SECTION"] =				"para cambiar de sección"
+SPANISH["UNINSTALLP_EMPTY"] =							"Vacio !!!"
 
 --install sd2vita
 SPANISH["MENU_TITLE_SD2VITA"] =							"Instala el plugin Storage Manager para usar una SD2VITA"
@@ -219,6 +220,9 @@ SPANISH["ENGLISH_GB"] =									"English_GB"
 SPANISH["TURKISH"] =									"TURCO"
 
 --descriptions plugins
+--StorageMgr
+ENGLISH_US["INSTALLP_DESC_SD2VITA"] =					"Instalar Plugin SD2VITA"
+
 --KERNEL
 SPANISH["INSTALLP_DESC_NONPDRM"] =						"Permite evitar la protección DRM en cualquier contenido de PS Vita"
 SPANISH["INSTALLP_DESC_NONPDRMU"] =					    "Permite evitar la protección DRM en cualquier contenido de PS Vita(MOD no oficial)"
@@ -271,6 +275,7 @@ SPANISH["INSTALLP_DESC_NOFINDSPLASH"] =					"Coloca la imagen elegida en ux0:Cus
 SPANISH["INSTALLP_DESC_SPLASHGH"] =						"El tamaño de la imagen debe ser: 960 * 544"
 SPANISH["INSTALLP_DESC_BOOTSPLASH_DONE"] =				"¡boot_splash.bin CREADO!"
 SPANISH["INSTALLP_DESC_BOOTSPLASH_FAIL"] =				"boot_splash.bin FAIL !!!"
+
 --Main
 SPANISH["INSTALLP_DESC_DENABLER"] =						"Permite descargar archivos a través del navegador"
 SPANISH["INSTALLP_DESC_NOLOCKSCREEN"] =					"Desactiva la pantalla de bloqueo de la PS Vita"
@@ -287,9 +292,6 @@ SPANISH["INSTALLP_DESC_VITACOMPA"] =					"Plugin que facilita el desarrollo de h
 SPANISH["INSTALLP_DESC_VOLUPROF"] =						"Automatically switch between your preferred speaker and headphone volumes."
 SPANISH["INSTALLP_DESC_DOLCEPOLCE"] =					"Removes PSTV Blacklist Checks (VITA/PSP/PS1/PSM)"
 SPANISH["INSTALLP_DESC_LOWMEMMODE"] =					"Launch system applications with enlarged memory game in the background"
-SPANISH["INSTALLP_DESC_QUICKPOWER"] =				"Power off, reboot, and suspend, all from the quick menu. For both Playstation Vita and Playstation TV. Hold the Power Off button to reboot."
-SPANISH["INSTALLP_DESC_QUICKVOLUME"] =				"Change volume from the quick menu on the Playstation Vita, just like on the Playstation TV."
-SPANISH["INSTALLP_DESC_QASCREEN"] =				    "High quality screenshot plugin for PS Vita. Unlocks native QA screenshot SceShell implementation."
 
 --ALL
 SPANISH["INSTALLP_DESC_VSHMENU"] =						"Un plugin con un menú estilo VHS para los juegos PS Vita y Homebrews"
