@@ -11,10 +11,7 @@
 
 function pluginsmanager()
 
-	--reload_all_plugins()
-
 	local tb_cop = {}
-	--tb_cop = plugins
 
 	update_translations(plugins, tb_cop)
 
@@ -29,14 +26,33 @@ function pluginsmanager()
 	end
 
 	local limtpm, scrollp, y1 = 8, {}, 70
-	
+
 	local section,sel_section = {},1
+	local tmp={}
 	for k,v in pairs(tai[partition].gameid) do
 		--os.message(tostring(tai[partition].gameid[k].section))
-		table.insert(section, tai[partition].gameid[k].section)
+		local scroll_tmp = newScroll( tai[partition].gameid[ k ].prx, limtpm)
+		if scroll_tmp.maxim > 0 then
+			table.insert(tmp, tai[partition].gameid[k].section)
+		end
+	end
+	if #tmp > 1 then table.sort(tmp) end
+
+	--*KERNEL,*main,*ALL...more
+	for i=1,#tmp do
+		if tmp[i]:upper() == "KERNEL" then
+			table.insert(section, 1, tmp[i])
+		elseif tmp[i]:upper() == "MAIN" then
+			table.insert(section, 2, tmp[i])
+		elseif tmp[i]:upper() == "ALL" then
+			table.insert(section, 3, tmp[i])
+		else
+			table.insert(section, tmp[i])
+		end
 	end
 
 	if tai[partition].gameid[ section[sel_section] ] then
+		--os.message(tostring(#tai[partition].gameid[ section[sel_section] ].prx))
 		scrollp = newScroll( tai[partition].gameid[ section[sel_section] ].prx, limtpm)
 	else
 		scrollp = newScroll( {}, limtpm)
@@ -51,52 +67,56 @@ function pluginsmanager()
 		if not tai[partition].exist then screen.print(480,270,LANGUAGE["UNINSTALLP_NOCONFIG_FOUND"]..locations[partition],1.3,color.red, 0x0, __ACENTER)
 		else
 
-			--Partitions
-			local xRoot = 750
-			local w = (960-xRoot)/#locations
-			for i=1, #locations do
-				if partition == i then
-					draw.fillrect(xRoot,0,w,40, color.green:a(90))
+			if #section > 0 and scrollp.maxim > 0 then
+				--Partitions
+				local xRoot = 750
+				local w = (960-xRoot)/#locations
+				for i=1, #locations do
+					if partition == i then
+						draw.fillrect(xRoot,0,w,40, color.green:a(90))
+					end
+					screen.print(xRoot+(w/2), 12, locations[i], 1, color.white, color.blue, __ACENTER)
+					xRoot += w
 				end
-				screen.print(xRoot+(w/2), 12, locations[i], 1, color.white, color.blue, __ACENTER)
-				xRoot += w
-			end
 
-			draw.fillrect(0,40,960,350,color.shine:a(25))
+				draw.fillrect(0,40,960,350,color.shine:a(25))
 
-			screen.print(15,20, "*"..section[sel_section],1,color.yellow, 0x0)
+				screen.print(15,20, "*"..section[sel_section],1,color.yellow, 0x0)
 
-			if tai[partition].gameid[ section[sel_section] ] then
+				if tai[partition].gameid[ section[sel_section] ] then
 
-				local y,ccolor = y1,color.white
+					local y = y1
 
-				for i=scrollp.ini, scrollp.lim do
-					if i == scrollp.sel then draw.offsetgradrect(0,y-10,940,35,color.shine:a(75),color.shine:a(135),0x0,0x0,21) end
+					for i=scrollp.ini, scrollp.lim do
+						if i == scrollp.sel then draw.offsetgradrect(0,y-10,940,35,color.shine:a(75),color.shine:a(135),0x0,0x0,21) end
 
-					if not files.exists(tai[partition].gameid[ section[sel_section] ].prx[i].path) then ccolor = color.orange end
-					screen.print(20,y, tai[partition].gameid[ section[sel_section] ].prx[i].path,1,ccolor,0x0)
-					y+=40
+						if not files.exists(tai[partition].gameid[ section[sel_section] ].prx[i].path) then ccolor = color.orange else ccolor = color.white end
+						screen.print(20,y, tai[partition].gameid[ section[sel_section] ].prx[i].path,1,ccolor,0x0)
+						y+=40
+					end
 				end
+
+				---- Draw Scroll Bar
+				local ybar,hbar = y1-10, (limtpm*40)-4
+				if scrollp.maxim >= limtpm then
+					draw.fillrect(950,ybar-2,8,hbar,color.shine)
+					local pos_height = math.max(hbar/scrollp.maxim, limtpm)
+					--Bar Scroll
+					draw.fillrect(950, ybar-2 + ((hbar-pos_height)/(scrollp.maxim-1))*(scrollp.sel-1), 8, pos_height, color.new(0,255,0))
+				end
+
+				screen.print(480,405,locations[partition].."tai/config.txt",1.3,color.green, 0x0, __ACENTER)
+
+				if buttonskey then buttonskey:blitsprite(5,448,saccept) end
+				screen.print(30,450,LANGUAGE["UNINSTALLP_PLUGIN"],1,color.white,color.black,__ALEFT)
+
+				if buttonskey2 then buttonskey2:blitsprite(5,475,0) end
+				if buttonskey2 then buttonskey2:blitsprite(35,475,1) end
+				screen.print(70,475,LANGUAGE["UNINSTALLP_LEFTRIGHT_SECTION"],1,color.white,color.black,__ALEFT)
+
+			else
+				screen.print(480,270,LANGUAGE["UNINSTALLP_EMPTY"],1.3,color.red,0x0,__ACENTER)
 			end
-
-			---- Draw Scroll Bar
-			local ybar,hbar = y1-10, (limtpm*40)-4
-			--if scrollp.maxim >= limtpm then
-				draw.fillrect(950,ybar-2,8,hbar,color.shine)
-				local pos_height = math.max(hbar/scrollp.maxim, limtpm)
-				--Bar Scroll
-				draw.fillrect(950, ybar-2 + ((hbar-pos_height)/(scrollp.maxim-1))*(scrollp.sel-1), 8, pos_height, color.new(0,255,0))
-			--end
-
-			screen.print(480,405,locations[partition].."tai/config.txt",1.3,color.green, 0x0, __ACENTER)
-			
-			if buttonskey then buttonskey:blitsprite(5,448,saccept) end
-			screen.print(30,450,LANGUAGE["UNINSTALLP_PLUGIN"],1,color.white,color.black,__ALEFT)
-
-			if buttonskey2 then buttonskey2:blitsprite(5,475,0) end
-			if buttonskey2 then buttonskey2:blitsprite(35,475,1) end
-			screen.print(70,475,LANGUAGE["UNINSTALLP_LEFTRIGHT_SECTION"],1,color.white,color.black,__ALEFT)
-
 		end
 
 		if buttonskey2 then buttonskey2:blitsprite(5,498,2) end
@@ -136,11 +156,12 @@ function pluginsmanager()
 					table.remove(tai[partition].raw, tai[partition].gameid[section[sel_section]].prx[scrollp.sel].line)
 					local name = files.nopath(tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].path:lower())
 
+					--No delete
 					if name != "adrenaline_kernel.skprx" then
 						local subpath = tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].path
 						if #subpath > 4 then
 							--os.message("1\n"..subpath)
-							files.delete(subpath)
+						--	files.delete(subpath)
 						end
 					end
 
@@ -169,8 +190,8 @@ function pluginsmanager()
 								file:close()
 							end
 						end
-						files.delete("ux0:tai/yamt.skprx")
-						files.delete("ur0:tai/yamt.skprx")
+						--files.delete("ux0:tai/yamt.skprx")
+						--files.delete("ur0:tai/yamt.skprx")
 					end
 
 					for i=#tb_cop,1,-1 do
@@ -189,8 +210,24 @@ function pluginsmanager()
 					--update
 					if tai[partition].gameid[ section[sel_section] ] then
 						scrollp = newScroll( tai[partition].gameid[ section[sel_section] ].prx, limtpm)
-					else
-						scrollp = newScroll( {}, limtpm)
+						if scrollp.maxim <= 0 then
+							for i=1,#section do
+								if section[sel_section] == section[i] then
+									os.message(section[i])
+									table.remove(section,i)
+									sel_section +=1
+									if sel_section > #section then sel_section = 1 end
+									if tai[partition].gameid[ section[sel_section] ] then
+										scrollp = newScroll( tai[partition].gameid[ section[sel_section] ].prx, limtpm)
+									else
+										scrollp = newScroll( {}, limtpm)
+									end
+									break
+								end
+							end
+						end
+					--else
+					--	scrollp = newScroll( {}, limtpm)
 					end
 					change = true
 					buttons.homepopup(0)
@@ -205,8 +242,8 @@ function pluginsmanager()
 				if sel_section > #section then sel_section = 1 end
 				if tai[partition].gameid[ section[sel_section] ] then
 					scrollp = newScroll( tai[partition].gameid[ section[sel_section] ].prx, limtpm)
-				else
-					scrollp = newScroll( {}, limtpm)
+				--else
+				--	scrollp = newScroll( {}, limtpm)
 				end
 			end
 
@@ -215,8 +252,8 @@ function pluginsmanager()
 				if sel_section < 1 then	sel_section = #section end
 				if tai[partition].gameid[ section[sel_section] ] then
 					scrollp = newScroll( tai[partition].gameid[ section[sel_section] ].prx, limtpm)
-				else
-					scrollp = newScroll( {}, limtpm)
+				--else
+				--	scrollp = newScroll( {}, limtpm)
 				end
 			end
 		end
@@ -227,8 +264,8 @@ function pluginsmanager()
 				sel_section = 1
 				if tai[partition].gameid[ section[sel_section] ] then
 					scrollp = newScroll( tai[partition].gameid[ section[sel_section] ].prx, limtpm)
-				else
-					scrollp = newScroll( {}, limtpm)
+				--else
+				--	scrollp = newScroll( {}, limtpm)
 				end
 			end
 		end
@@ -246,7 +283,7 @@ function del_plugin_tai(mount, obj1, obj2)
 			--delete plugin physical
 			if #subpath > 4 then
 				--os.message("2\n"..subpath)
-				files.delete(subpath)
+				--files.delete(subpath)
 			end
 		end
 	end

@@ -9,6 +9,23 @@
 	Collaborators: BaltazaR4 & Wzjk.
 ]]
 
+__file = ""
+function onNetGetFile(size,written,speed)
+	if back then back:blit(0,0) end
+
+	screen.print(480,400,tostring(__file),1,color.white, color.blue:a(135),__ACENTER)
+
+	screen.print(480,470,tostring(files.sizeformat(written or 0)).." / "..tostring(files.sizeformat(size or 0)),1,color.white, color.blue:a(135),__ACENTER)
+
+	l = (written*940)/size
+		screen.print(3+l,495,math.floor((written*100)/size).."%",0.8,0xFFFFFFFF,0x0,__ACENTER)
+			draw.fillrect(10,524,l,6,color.new(0,255,0))
+				draw.circle(10+l,526,6,color.new(0,255,0),30)
+	screen.flip()
+
+	return 1
+end
+
 function write_config()
 	ini.write(__PATH_INI,"UPDATE","update",__UPDATE)
 	ini.write(__PATH_INI,"LANGUAGE","lang",__LANG)
@@ -30,12 +47,6 @@ function message_wait(message)
 	draw.rect(x,y,w,h,color.white)
 		screen.print(480,y+15, titlew,1,color.white,color.black,__ACENTER)
 	screen.flip()
-end
-
-function check_online()
-	local file = http.get("https://raw.githubusercontent.com/theheroGAC/Autoplugin/master/version")
-
-	if file then return true else return false end
 end
 
 --Variables Universales

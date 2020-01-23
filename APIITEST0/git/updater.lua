@@ -11,7 +11,9 @@ function screen.flip()
 	scr_flip()
 	if UPDATE_PORT:available() > 0 then
 
-		local version = UPDATE_PORT:pop()
+		local info = UPDATE_PORT:pop()
+		local version = info[1]
+		--local version = UPDATE_PORT:pop()
 		local major = (version >> 0x18) & 0xFF;
 		local minor = (version >> 0x10) & 0xFF;
 		update = image.load("git/updater/update.png")
@@ -20,8 +22,7 @@ function screen.flip()
 		elseif back then back:blit(0,0) end
 		screen.flip()
 
-		if os.message("\n"..string.format("    %s v %s", APP_PROJECT, string.format("%X.%02X ",major, minor)..(LANGUAGE["UPDATER_AVAILABLE"]).."\n\n"..
-					(LANGUAGE["UPDATER_QUESTION_UPDATE"])), 1) == 1 then
+		if os.dialog(string.format("\n    %s v %s", APP_PROJECT, string.format("%X.%02X ",major, minor)..(LANGUAGE["UPDATER_AVAILABLE"])).."\n\n"..info[2], LANGUAGE["UPDATER_QUESTION_UPDATE"], __DIALOG_MODE_OK_CANCEL) == true then
 			buttons.homepopup(0)
 
 			if update then update:blit(0,0)

@@ -2,8 +2,9 @@
 files.mkdir("ux0:data/AUTOPLUGIN2/lang/")
 LANGUAGE = {}
 
-function update_language(lang)
-	for k,v in pairs(lang) do
+function update_language(table_lang)
+	if not table_lang then table_lang = {} end
+	for k,v in pairs(table_lang) do
 		LANGUAGE[k] = v
 	end
 end

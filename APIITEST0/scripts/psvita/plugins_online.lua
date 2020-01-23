@@ -11,7 +11,6 @@
 
 function update_database2(database,tb)
 
-	buttons.homepopup(0)
 	local file = io.open(database, "w+")
 
     file:write("plugins = {\n")
@@ -31,15 +30,17 @@ function update_database2(database,tb)
 	file:write("}\n")
 	file:close()
 
+
 	local cont = {}
 	for line in io.lines(database) do
 		if line:byte(#line) == 13 then line = line:sub(1,#line-1) end --Remove CR == 13
 		table.insert(cont,line)
 	end
 
+
 	dofile("plugins/plugins.lua")--Official
 	for i=1,#plugins do
-		for j=2, #cont do
+		for j=1, #cont do
 			if string.find(cont[j], plugins[i].KEY, 1, true) then
 				cont[j] = cont[j]:gsub('desc = "(.-)",', 'desc = LANGUAGE["'..plugins[i].KEY..'"],')
 			end
@@ -52,13 +53,95 @@ function update_database2(database,tb)
 	file:close()
 	dofile("plugins/plugins.lua")--Official
 	if #plugins > 0 then table.sort(plugins, function (a,b) return string.lower(a.name)<string.lower(b.name) end) end
-	buttons.homepopup(1)
+
 end
 
 function plugins_online2()
 
+	if back then back:blit(0,0) end
+		message_wait()
+	os.delay(500)
+
+local onNetGetFileOld = onNetGetFile
+onNetGetFile = nil
+	__file = "Langdatabase.lua"
+	if http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/Translations/Langdatabase.lua", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua") then
+		dofile("ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua")
+	else
+		os.message(LANGUAGE["LANG_ONLINE_FAILDB"])
+		return
+	end
+
+	buttons.homepopup(0)
+
+	local tmpss = {}
+	local __flag = false
+	if #Online_Langs > 0 then
+
+		for i=1,#Langs do
+
+			for j=1,#Online_Langs do
+				if string.upper(Langs[i].id) == string.upper(Online_Langs[j].id) then
+					if tonumber(Langs[i].version) < tonumber(Online_Langs[j].version) then
+						--if os.message("bajar si o no ?\n"..Online_Langs[j].id,1) == 1 then
+						__file = Online_Langs[j].id
+						if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/lang/%s.lua", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Langs[j].id), "lang/")) then
+
+							Langs[i] = Online_Langs[j]
+							table.insert(tmpss,Langs[i])
+							__flag = true
+						end
+					end
+				end
+			end
+
+		end
+	else
+		os.message(LANGUAGE["LANG_ONLINE_FAILDB"])
+		return
+
+	end--Online_Langs > 0
+
+	local tmps = {}
+	for i=1,#Online_Langs do
+		local __find = false
+		for j=1,#Langs do
+			if string.upper(Online_Langs[i].id) == string.upper(Langs[j].id) then
+				__find = true
+				break
+			end
+		end
+		if not __find then
+			--if os.message("BBajar si o no ?\n"..Online_Langs[i].id,1) == 1 then
+			__file = Online_Langs[i].id
+			if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/lang/%s.lua", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Langs[i].id), "lang/")) then
+				table.insert(tmps, { line = i })
+				__flag = true
+			end
+		end
+
+	end
+
+	__file = ""
+	for i=1,#tmps do
+		table.insert( Langs, Online_Langs[tmps[i].line] )
+		Langs[#Langs].new = true
+		table.insert(tmpss,Langs[#Langs])
+	end
+
+	if __flag then
+		if #Langs > 1 then table.sort(Langs ,function (a,b) return string.lower(a.id)<string.lower(b.id) end) end
+		update_database("lang/Langdatabase.lua",Langs)
+	else
+		dofile("lang/Langdatabase.lua")--Official
+		load_translates()
+	end
+
 	local tmpss = {}
 
+onNetGetFile = onNetGetFileOld
+
+	__file = "Database Plugins"
 	if http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/plugins/plugins.lua", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/plugins/plugins.lua") then
 		dofile("ux0:data/AUTOPLUGIN2/plugins/plugins.lua")
 	else
@@ -78,11 +161,25 @@ function plugins_online2()
 
 					if tonumber(plugins[i].version) < tonumber(Online_Plugins[j].version) then
 
-						--if os.message("bajar si o no ?\n"..Online_Plugins[j].name,1) == 1 then
-						if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/plugins/%s", APP_REPO, APP_PROJECT, Online_Plugins[j].path), path_plugins)) then
+						if back2 then back2:blit(0,0) end
+						os.delay(350)
+
+						__file = Online_Plugins[j].name
+						--if os.message("Update bajar si o no ?\n"..Online_Plugins[j].name,1) == 1 then
+						--Lo mejor es poner ruta a project/resources/plugins
+						if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/resources/plugins/%s", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Plugins[j].path), path_plugins)) then
+
+							if Online_Plugins[j].path2 then
+								http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/resources/plugins/%s", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Plugins[j].path2), path_plugins)
+							end
+
+							if Online_Plugins[j].config and not files.exists(locations[loc].."tai/"..Online_Plugins[j].config) then
+								http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/resources/plugins/%s", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Plugins[j].config), path_plugins)
+							end
+
 							if back2 then back2:blit(0,0) end
 								message_wait(LANGUAGE["UPDATE_PLUGIN"].."\n\n"..Online_Plugins[j].name)
-							os.delay(750)
+							os.delay(1500)
 
 							plugins[i] = Online_Plugins[j]
 							table.insert(tmpss,plugins[i])
@@ -110,11 +207,26 @@ function plugins_online2()
 			end
 		end
 		if not _find then
-			--if os.message("bajar si o no ?\n"..Online_Plugins[i].name,1) == 1 then
-			if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/plugins/%s", APP_REPO, APP_PROJECT, Online_Plugins[i].path), path_plugins)) then
+			--if os.message("Nuevo bajar si o no ?\n"..Online_Plugins[i].name,1) == 1 then
+
+			if back2 then back2:blit(0,0) end
+			os.delay(350)
+
+			__file = Online_Plugins[i].name
+
+			if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/resources/plugins/%s", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Plugins[i].path), path_plugins)) then
+
+				if Online_Plugins[i].path2 then
+					http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/resources/plugins/%s", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Plugins[i].path2), path_plugins)
+				end
+				if Online_Plugins[i].config and not files.exists(locations[loc].."tai/"..Online_Plugins[i].config) then
+					http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/resources/plugins/%s", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Plugins[i].config), path_plugins)
+				end
+
 				if back2 then back2:blit(0,0) end
 					message_wait(LANGUAGE["UPDATE_PLUGIN"].."\n\n"..Online_Plugins[i].name)
-				os.delay(750)
+				os.delay(1500)
+
 				table.insert(tmps, { line = i })
 				__flag = true
 			end
@@ -129,10 +241,13 @@ function plugins_online2()
 		table.insert(tmpss,plugins[#plugins])
 	end
 
+	__file = ""
 	if __flag then
 		if #plugins > 1 then table.sort(plugins ,function (a,b) return string.lower(a.section)<string.lower(b.section) end) end
 		update_database2("plugins/plugins.lua",plugins)
 	end
+
+	buttons.homepopup(1)
 
 	local maxim,y1 = 10,85
 	local scroll = newScroll(tmpss,maxim)

@@ -24,12 +24,18 @@ function update_database(database,tb)
 	file:write("}\n")
 	file:close()
 	dofile("lang/Langdatabase.lua")--Official
+	load_translates()
 end
 
 function lang_online()
 
+	if back then back:blit(0,0) end
+		message_wait()
+	os.delay(500)
+
 	local tmpss = {}
 
+	__file = "Langdatabase.lua"
 	if http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/Translations/Langdatabase.lua", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua") then
 		dofile("ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua")
 	else
@@ -46,10 +52,11 @@ function lang_online()
 				if string.upper(Langs[i].id) == string.upper(Online_Langs[j].id) then
 					if tonumber(Langs[i].version) < tonumber(Online_Langs[j].version) then
 						--if os.message("bajar si o no ?\n"..Online_Langs[j].id,1) == 1 then
-						if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/Translations/%s.lua", APP_REPO, APP_PROJECT, Online_Langs[j].id), "lang/")) then
+						__file = Online_Langs[j].id
+						if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/lang/%s.lua", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Langs[j].id), "lang/")) then
 							if back2 then back2:blit(0,0) end
 								message_wait(LANGUAGE["STRING_INSTALLED"].."\n\n"..Online_Langs[j].id.."\n")
-							os.delay(750)
+							os.delay(1500)
 
 							Langs[i] = Online_Langs[j]
 							table.insert(tmpss,Langs[i])
@@ -77,10 +84,11 @@ function lang_online()
 		end
 		if not __find then
 			--if os.message("BBajar si o no ?\n"..Online_Langs[i].id,1) == 1 then
-			if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/Translations/%s.lua", APP_REPO, APP_PROJECT, Online_Langs[i].id), "lang/")) then
+			__file = Online_Langs[i].id
+			if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/lang/%s.lua", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Langs[i].id), "lang/")) then
 				if back2 then back2:blit(0,0) end
 					message_wait(LANGUAGE["STRING_INSTALLED"].."\n\n"..Online_Langs[i].id)
-				os.delay(750)
+				os.delay(1500)
 				table.insert(tmps, { line = i })
 				__flag = true
 			end
@@ -88,6 +96,7 @@ function lang_online()
 
 	end
 
+	__file = ""
 	for i=1,#tmps do
 		table.insert( Langs, Online_Langs[tmps[i].line] )
 		Langs[#Langs].new = true

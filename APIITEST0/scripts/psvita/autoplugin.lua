@@ -40,6 +40,8 @@ function plugins_installation(sel)
 				end
 			elseif plugins[sel].path == "vitastick.skprx" and not game.exists("VITASTICK") then
 				game.install("resources/plugins/vitastick.vpk")
+			elseif plugins[sel].path == "ModalVol.suprx" and not game.exists("MODALVOLM") then
+				game.install("resources/plugins/VolumeControl.vpk")
 			end
 
 			if install then
@@ -127,7 +129,15 @@ end
 
 function autoplugin()
 
-	--reload_all_plugins()
+	--os.message(tostring(#tai[partition].gameid[ section[sel_section] ].prx))
+	--tai[mount].gameid[ obj1 ].prx[idx].path
+	--Init load configs
+	tai.load()
+	local partition = 0
+	if tai[__UX0].exist then partition = __UX0
+	elseif tai[__UR0].exist then partition = __UR0
+	end
+
 
 	local limit = 10
 	local scr = newScroll(plugins,limit)
@@ -157,14 +167,21 @@ function autoplugin()
 			xRoot += w
 		end
 
-		--draw.fillrect(0,40,960,350,color.shine:a(25))
-
 		--List of Plugins
 		local y = 64
 		for i=scr.ini,scr.lim do
 
 			if i == scr.sel then draw.offsetgradrect(3,y-5,944,27,color.shine:a(75),color.shine:a(135),0x0,0x0,21) end
 
+			local idx = tai.find(partition,plugins[i].section,plugins[i].path)
+			if idx != nil then
+				draw.fillrect(920,y-5,28,27,color.shine:a(75))
+				if files.exists(tai[partition].gameid[ plugins[i].section ].prx[idx].path) then
+					draw.fillrect(924,y-2,21,21,color.green:a(175))
+				else
+					draw.fillrect(924,y-2,21,21,color.yellow:a(175))
+				end
+			end
 			screen.print(40,y, plugins[i].name, 1.0,color.white,color.blue,__ALEFT)
 
 			if plugins[i].inst then

@@ -42,7 +42,7 @@ plugins = {
 { name = "PSVshell by Electry v1.1", path = "PSVshell.skprx", section = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_PSVSHELL"], KEY = "INSTALLP_DESC_PSVSHELL", },
 { name = "0syscall6 by SKGleba v1.2", path = "0syscall6.skprx", section = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_SYSCALL6"], KEY = "INSTALLP_DESC_SYSCALL6", },
 { name = "Monaural by cuevavirus v1.0.0", path = "monaural.skprx", section = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_MONAURAL"], KEY = "INSTALLP_DESC_MONAURAL", },
-{ name = "Music Premium by cuevavirus v1.0.3", path = "music_premium.skprx", section = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_MUPREMIUM"], KEY = "INSTALLP_DESC_MUPREMIUM" },
+{ name = "Music Premium by cuevavirus v1.0.5", path = "music_premium.skprx", section = "KERNEL", version = "0003", desc = LANGUAGE["INSTALLP_DESC_MUPREMIUM"], KEY = "INSTALLP_DESC_MUPREMIUM" },
 
 --Boot_config.txt
 { name = "Custom Boot Splash by Princess of Sleeping", path = "custom_boot_splash.skprx", section = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_CUSTOMBOOTSPLASH"], KEY = "INSTALLP_DESC_CUSTOMBOOTSPLASH", },
@@ -60,13 +60,17 @@ plugins = {
 { name = "reSkype by SilicaAndPina v1.0", path = "reSkype.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_RESKYPE"], KEY = "INSTALLP_DESC_RESKYPE", },
 { name = "Autoboot by Rinnegatamante v1.2 (only for 3.60/3.65)", path = "AutoBoot.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_AUTOBOOT"], KEY = "INSTALLP_DESC_AUTOBOOT", },
 { name = "Vitacompanion by devnoname120 v1.00", path = "vitacompanion.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VITACOMPA"], KEY = "INSTALLP_DESC_VITACOMPA", },
-{ name = "volume_profile by cuevavirus v1.1.1", path = "jav.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VOLUPROF"], KEY = "INSTALLP_DESC_VOLUPROF", },
+{ name = "volume_profile by cuevavirus v2.0.0", path = "jav.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VOLUPROF"], KEY = "INSTALLP_DESC_VOLUPROF", },
 { name = "DolcePolce by SilicaAndPina v1.0", path = "DolcePolce.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_DOLCEPOLCE"], KEY = "INSTALLP_DESC_DOLCEPOLCE", },
 { name = "LowMemMode by GrapheneCt v1.0", path = "LowMemMode.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_LOWMEMMODE"], KEY = "INSTALLP_DESC_LOWMEMMODE", },
+{ name = "Quick Power by cuevavirus v1.1.0", path = "quick_power.suprx", section = "main", version = "0002", desc = LANGUAGE["INSTALLP_DESC_QUICKPOWER"], KEY = "INSTALLP_DESC_QUICKPOWER", },
+{ name = "Quick Volume by cuevavirus v1.2.1", path = "quick_volume.suprx", section = "main", version = "0003", desc = LANGUAGE["INSTALLP_DESC_QUICKVOLUME"], KEY = "INSTALLP_DESC_QUICKVOLUME", },
+{ name = "QAscreenshot by GrapheneCt v1.1", path = "QAscreenshot.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_QASCREEN"], KEY = "INSTALLP_DESC_QASCREEN", },
+{ name = "NoSharedFb v1.0", path = "NoSharedFb.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_NOSHAREDFB"], KEY = "INSTALLP_DESC_NOSHAREDFB", },
 
 --All
 { name = "PSV-VSH MENU by joel16 v3.4", path = "vsh.suprx", section = "ALL", path2 = "kuio.skprx", section2 = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VSHMENU"], KEY = "INSTALLP_DESC_VSHMENU", },-- Need kuio.skprx
-{ name = "VitaGrafix by Electry v5.0.1", path = "VitaGrafix.suprx", section = "ALL", path2 = "ioplus.skprx", section2 = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VITAGRAFIX"], KEY = "INSTALLP_DESC_VITAGRAFIX", },-- Need kuio.skprx
+{ name = "VitaGrafix by Electry v5.0.2", path = "VitaGrafix.suprx", section = "ALL", path2 = "ioplus.skprx", section2 = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VITAGRAFIX"], KEY = "INSTALLP_DESC_VITAGRAFIX", },-- Need kuio.skprx
 { name = "Oclock Vita by frangarcj v1.2.1", path = "oclockvita.suprx", section = "ALL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_OVERCLOCK"], KEY = "INSTALLP_DESC_OVERCLOCK", },
 { name = "Framecounter by Rinnegatamante v1.2", path = "Framecounter.suprx", section = "ALL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_FRAMECOUNTER"], KEY = "INSTALLP_DESC_FRAMECOUNTER", },
 { name = "VGi by Electry v0.7", path = "VGi.suprx", section = "ALL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VGI"], KEY = "INSTALLP_DESC_VGI", },

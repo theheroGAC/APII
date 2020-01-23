@@ -39,7 +39,7 @@ if os.access() == 0 then
 	os.exit()
 end
 
-dofile("scripts/tai.lua")
+--dofile("scripts/tai.lua")
 dofile("scripts/commons.lua")
 dofile("scripts/scroll.lua")
 
@@ -48,7 +48,7 @@ files.mkdir("ux0:data/AUTOPLUGIN2/font/")
 if __LANG == "CHINESE_T" or __LANG == "CHINESE_S" or __LANG == "TURKISH" then
 	if not files.exists("ux0:data/AUTOPLUGIN2/font/font.pgf") then
 		message_wait(CHINESE_FONT_DOWNLOAD)
-		http.getfile("https://raw.githubusercontent.com/theheroGAC/Autoplugin/master/translations/font/font.pgf", "ux0:data/AUTOPLUGIN2/font/font.pgf")
+		http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/font/font.pgf", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/font/font.pgf")
 	end
 end
 
@@ -67,6 +67,7 @@ end
 write_config()
 
 --Copy defect for config.txt
+dofile("scripts/tai.lua")
 if not files.exists(tai_ux0_path) and not files.exists(tai_ur0_path) then files.copy("resources/config/config.txt", "ur0:tai/") end
 
 --Init load configs

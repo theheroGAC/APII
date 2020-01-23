@@ -37,12 +37,12 @@ function change_lang()
 	local current_lang = nil
 	local tb = {}
 	for i=1,#langs do
-		if __LANG == langs[i].file and not current_lang then current_lang = langs[i].name end
+		if __LANG == langs[i].file and files.exists("lang/"..langs[i].file..".lua") and not current_lang then current_lang = langs[i].name end
 		if files.exists("lang/"..langs[i].file..".lua") then
 			table.insert(tb, langs[i])
 		end
 	end
-	if not current_lang then current_lang = "UNK" end
+	if not current_lang then current_lang = "ENGLISH_US" end
 
 	local maxim,y1 = 8,85
 	local scroll = newScroll(tb,maxim)
@@ -124,6 +124,9 @@ function change_lang()
 					load_language(tb[scroll.sel].file)
 				end
 
+				dofile("plugins/plugins.lua")
+				if #plugins > 0 then table.sort(plugins, function (a,b) return string.lower(a.name)<string.lower(b.name) end) end
+
 				__LANG = tb[scroll.sel].file
 				write_config()
 				os.delay(150)
@@ -134,7 +137,7 @@ function change_lang()
 				if __LANG == "CHINESE_T" or __LANG == "CHINESE_S" or __LANG == "TURKISH" then
 					if not files.exists("ux0:data/AUTOPLUGIN2/font/font.pgf") then
 						message_wait(CHINESE_FONT_DOWNLOAD)
-						http.getfile("https://raw.githubusercontent.com/theheroGAC/Autoplugin/master/translations/font/font.pgf", "ux0:data/AUTOPLUGIN/font/font.pgf")
+						http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/font/font.pgf", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN/font/font.pgf")
 					end
 				end
 

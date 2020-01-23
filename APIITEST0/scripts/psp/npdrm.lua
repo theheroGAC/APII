@@ -132,6 +132,10 @@ function npdrm_free()
 			screen.print(480, 400, LANGUAGE["MENU_PSP_NPDRMFREE_DESC"],1,color.white,color.blue,__ACENTER)
 		end
 
+		if buttonskey2 then buttonskey2:blitsprite(900,448,2) end
+		if buttonskey2 then buttonskey2:blitsprite(930,448,3) end
+		screen.print(895,450,LANGUAGE["PSPCTRLS_LR_SWAP"],1,color.white,color.black,__ARIGHT)
+
 		if buttonskey then buttonskey:blitsprite(10,448,__TRIANGLE) end
 		screen.print(40,450,LANGUAGE["UNINSTALL_PLUGIN"],1,color.white,color.black, __ALEFT)
 

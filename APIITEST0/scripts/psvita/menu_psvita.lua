@@ -11,7 +11,6 @@
 
 --Funciones PSVITA
 dofile("scripts/psvita/sd2vita.lua")
---dofile("scripts/psvita/plugins.lua")
 
 --Plugins!!!
 dofile("plugins/plugins.lua")
