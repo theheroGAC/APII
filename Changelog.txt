@@ -1,3 +1,14 @@
+#AutoPlugin 4 TEST
+Releas v0.02 (TEST)
+Add info in the list of the plugins:
+- Green: Plugin Installed -- Yellow Plugin in the config.txt but not exists in the path.
+Add message for update (changelog)
+Add new Bg0 by Vicent
+
+#AutoPlugin 3er TEST
+Update Quick Volume by cuevavirus			v1.2.1 ok
+Added NoSharedFb							v1.0
+
 #AutoPlugin 2do TEST
 Update PSVita-StorageMgr by Celeste 		v3.2 ok
 Update Music Premium plugin by cuevavirus 	v1.0.5 ok
