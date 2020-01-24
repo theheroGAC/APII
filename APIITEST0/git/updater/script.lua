@@ -12,19 +12,19 @@ update = image.load("update.png")
 if update then update:blit(0,0) end
 screen.flip()
 
-dofile("language.lua")
-
 args = os.arg()
 if args:len() == 0 then
-	os.message(LANGUAGE["UPDATER_ERROR"])
+	os.message("UPDATER_ERROR")
 	os.exit()
 end
 
 args /= "&"
 if #args != 5 then
-	os.message(LANGUAGE["UPDATER_ERROR"])
+	os.message("UPDATER_ERROR")
 	os.exit()
 end
+
+dofile("language.lua")
 
 function onAppInstall(step, size_argv, written, file, totalsize, totalwritten)
 

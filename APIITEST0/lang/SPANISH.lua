@@ -296,6 +296,7 @@ SPANISH["INSTALLP_DESC_QUICKPOWER"] =					"Power off, reboot, and suspend, all f
 SPANISH["INSTALLP_DESC_QUICKVOLUME"] =					"Change volume from the quick menu on the Playstation Vita, just like on the Playstation TV."
 SPANISH["INSTALLP_DESC_QASCREEN"] =				    	"High quality screenshot plugin for PS Vita. Unlocks native QA screenshot SceShell implementation."																																												  
 SPANISH["INSTALLP_DESC_NOSHAREDFB"] =					"Allows to bypass shared framebuffer issues after suspend-resume cycle for homebrew applications that run in system mode. but use standard framebuffer implementation."
+SPANISH["INSTALLP_DESC_TRIMPOSE"] =						"Plugin for PS Vita that makes impose menu (the one that appears after long PS button press) transparent."
 
 --ALL
 SPANISH["INSTALLP_DESC_VSHMENU"] =						"Un plugin con un menú estilo VHS para los juegos PS Vita y Homebrews"

@@ -57,8 +57,7 @@ function screen.flip()
 				return 1;
 			end
 
-			local res = http.download(url, path)
-			if res then -- Success!
+			if http.download(url, path).success then
 				files.mkdir("ux0:/data/1luapkg")
 				files.copy("eboot.bin","ux0:/data/1luapkg")
 				files.copy("git/updater/script.lua","ux0:/data/1luapkg/")

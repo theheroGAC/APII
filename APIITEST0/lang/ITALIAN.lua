@@ -296,6 +296,7 @@ ITALIAN["INSTALLP_DESC_QUICKPOWER"] =					"Power off, reboot, and suspend, all f
 ITALIAN["INSTALLP_DESC_QUICKVOLUME"] =					"Change volume from the quick menu on the Playstation Vita, just like on the Playstation TV."
 ITALIAN["INSTALLP_DESC_QASCREEN"] =				    	"High quality screenshot plugin for PS Vita. Unlocks native QA screenshot SceShell implementation."
 ITALIAN["INSTALLP_DESC_NOSHAREDFB"] =					"Allows to bypass shared framebuffer issues after suspend-resume cycle for homebrew applications that run in system mode. but use standard framebuffer implementation."
+ITALIAN["INSTALLP_DESC_TRIMPOSE"] =						"Plugin for PS Vita that makes impose menu (the one that appears after long PS button press) transparent."
 
 --ALL
 ITALIAN["INSTALLP_DESC_VSHMENU"] =						"Un plugin per taiHEN con VSH menu per i giochi PSVITA e gli homebrew"

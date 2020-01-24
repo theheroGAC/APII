@@ -79,7 +79,7 @@ function customimgsplash()
 			end
 		end
 	end
-	table.insert(custom_boot, { name = "henkaku.png", path = "resources/boot_splash.png" })
+	table.insert(custom_boot, { name = "henkaku.png", path = "imgs/boot_splash.png" })
 
 	table.sort(custom_boot,function(a,b) return string.lower(a.name)<string.lower(b.name) end)
 

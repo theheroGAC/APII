@@ -17,16 +17,19 @@ files.mkdir("ux0:data/AUTOPLUGIN2/")
 __PATH_INI    = "ux0:data/AUTOPLUGIN2/config.ini"
 
 --Show splash
-splash.zoom("resources/splash.png")
+splash.zoom("imgs/splash.png")
 
 --Imagen de Fondo
-back = image.load("resources/back.png")
-back2 = image.load("resources/back2.png")
+back = image.load("imgs/back.png")
+back2 = image.load("imgs/back2.png")
 
 --Sprites para Botones
-buttonskey = image.load("resources/buttons.png",20,20)
-buttonskey2 = image.load("resources/buttons2.png",20,20)
-buttonskey3 = image.load("resources/buttons3.png",35,25)
+buttonskey = image.load("imgs/buttons.png",20,20)
+buttonskey2 = image.load("imgs/buttons2.png",20,20)
+buttonskey3 = image.load("imgs/buttons3.png",35,25)
+
+dotg = image.load("imgs/dot_green.png")
+doty = image.load("imgs/dot_yellow.png")
 
 __LANG = ini.read(__PATH_INI,"LANGUAGE","lang","")
 if __LANG == "" then __LANG = os.language() end

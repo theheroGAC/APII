@@ -100,7 +100,7 @@ function plugins_installation(sel)
 				--Extra
 				if plugins[sel].path == "vsh.suprx" then files.delete("ur0:/data:/vsh/")
 				elseif plugins[sel].path == "custom_boot_splash.skprx" and not files.exists("ur0:tai/boot_splash.bin") then--Custom Boot Splash
-					local henkaku = image.load("resources/boot_splash.png")
+					local henkaku = image.load("imgs/boot_splash.png")
 					if henkaku then img2splashbin(henkaku,false) end
 				elseif plugins[sel].path == "vitacheat.skprx" or plugins[sel].path == "vitacheat360.skprx" then--Vitacheat
 					if not files.exists("ux0:vitacheat/db/") then files.extract("resources/plugins/vitacheat.zip","ux0:") end
@@ -175,13 +175,30 @@ function autoplugin()
 
 			local idx = tai.find(partition,plugins[i].section,plugins[i].path)
 			if idx != nil then
-				draw.fillrect(920,y-5,28,27,color.shine:a(75))
+				--draw.fillrect(920,y-5,2,25,color.shine:a(50))
 				if files.exists(tai[partition].gameid[ plugins[i].section ].prx[idx].path) then
-					draw.fillrect(924,y-2,21,21,color.green:a(175))
+					if dotg then dotg:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.green:a(205)) end
 				else
-					draw.fillrect(924,y-2,21,21,color.yellow:a(175))
+					if doty then doty:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.yellow:a(205)) end
 				end
 			end
+			--[[
+			--local sub 
+			--if os.module("repatch") then
+				--local idx = tai.find(partition,plugins[i].section,plugins[i].path)
+				--if idx != nil then
+					--draw.fillrect(920,y-5,2,25,color.shine:a(50))
+					--if files.exists(tai[partition].gameid[ plugins[i].section ].prx[idx].path) then
+						--if dotg then dotg:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.green:a(205)) end
+					--else
+					--	if doty then doty:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.yellow:a(205)) end
+					--end
+				--end
+			end
+			]]
+			
+			--	if dotg then dotg:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.green:a(205)) end
+			--end
 			screen.print(40,y, plugins[i].name, 1.0,color.white,color.blue,__ALEFT)
 
 			if plugins[i].inst then
@@ -239,17 +256,6 @@ function autoplugin()
 			end
 			os.delay(100)
 			return
-		end
-
-		--Exit
-		if buttons.start then
-			if change then
-				os.message(LANGUAGE["STRING_PSVITA_RESTART"])
-				os.delay(250)
-				buttons.homepopup(1)
-				power.restart()
-			end
-			os.exit()
 		end
 
 		if scr.maxim > 0 then
