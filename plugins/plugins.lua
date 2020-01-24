@@ -67,6 +67,7 @@ Online_Plugins = {
 { name = "Quick Volume by cuevavirus v1.2.1", path = "quick_volume.suprx", section = "main", version = "0003", desc = LANGUAGE["INSTALLP_DESC_QUICKVOLUME"], KEY = "INSTALLP_DESC_QUICKVOLUME", },
 { name = "QAscreenshot by GrapheneCt v1.1", path = "QAscreenshot.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_QASCREEN"], KEY = "INSTALLP_DESC_QASCREEN", },
 { name = "NoSharedFb v1.0", path = "NoSharedFb.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_NOSHAREDFB"], KEY = "INSTALLP_DESC_NOSHAREDFB", },
+{ name = "TransparentImpose v0.9 by GrapheneCt", path = "TrImpose.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_TRIMPOSE"], KEY = "INSTALLP_DESC_TRIMPOSE", },
 
 --All
 { name = "PSV-VSH MENU by joel16 v3.4", path = "vsh.suprx", section = "ALL", path2 = "kuio.skprx", section2 = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VSHMENU"], KEY = "INSTALLP_DESC_VSHMENU", },-- Need kuio.skprx
