@@ -1,9 +1,14 @@
+#AutoPlugin 5 TEST
+Release v0.03 (TEST)
+++ Add new Resources by Vicent
+++ Added TransparentImpose					v0.9
+
 #AutoPlugin 4 TEST
-Releas v0.02 (TEST)
-Add info in the list of the plugins:
+Release v0.02 (TEST)
+++ Add info in the list of the plugins:
 - Green: Plugin Installed -- Yellow Plugin in the config.txt but not exists in the path.
-Add message for update (changelog)
-Add new Bg0 by Vicent
+++ Add message for update (changelog)
+++ Add new Bg0 by Vicent
 
 #AutoPlugin 3er TEST
 Update Quick Volume by cuevavirus			v1.2.1 ok
