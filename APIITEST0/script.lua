@@ -17,7 +17,7 @@ files.mkdir("ux0:data/AUTOPLUGIN2/")
 __PATH_INI    = "ux0:data/AUTOPLUGIN2/config.ini"
 
 --Show splash
-splash.zoom("imgs/splash.png")
+--splash.zoom("imgs/splash.png")
 
 --Imagen de Fondo
 back = image.load("imgs/back.png")
