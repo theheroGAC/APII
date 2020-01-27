@@ -11,17 +11,25 @@
 
 function plugins_installation(sel)
 
-	if plugins[sel].path == "reF00D.skprx" and loc == __UX0 then os.message(LANGUAGE["INSTALLP_WARNING_REFOOD"])
+	if plugins[sel].path:find("udcd_uvc",1,true) and hw.model() == "PlayStation TV" then os.message(LANGUAGE["INSTALLP_WARNING_UDCD"])
+	elseif plugins[sel].path == "reF00D.skprx" and loc == __UX0 then os.message(LANGUAGE["INSTALLP_WARNING_REFOOD"])
 	elseif plugins[sel].path == "custom_warning.suprx" and ( version == "3.67" or version == "3.68") then os.message(LANGUAGE["INSTALLP_CWARNING_360_365"])
 	else
 
+		local idx = nil
 		if files.exists(tai[loc].path) then
 
-			local install = true
+			local install,udcd = true,false
+
+			idx = tai.find(loc, "KERNEL", "udcd_uvc.skprx")
+			if idx then
+				tai.del(loc, "KERNEL", "udcd_uvc.skprx")
+				udcd = true
+			end
 
 			--Checking plugin Batt (only 1 of them)
 			if plugins[sel].path == "shellbat.suprx" then
-				local idx = tai.find(loc, "main", "shellsecbat.suprx")
+				idx = tai.find(loc, "main", "shellsecbat.suprx")
 				if idx then
 					if os.message(LANGUAGE["INSTALLP_QUESTION_SHELLSECBAT"],1) == 1 then
 						tai.del(loc, "main", "shellsecbat.suprx")
@@ -30,7 +38,7 @@ function plugins_installation(sel)
 					end
 				end
 			elseif plugins[sel].path == "shellsecbat.suprx" then
-				local idx = tai.find(loc, "main", "shellbat.suprx")
+				idx = tai.find(loc, "main", "shellbat.suprx")
 				if idx then
 					if os.message(LANGUAGE["INSTALLP_QUESTION_SHELLBAT"],1) == 1 then
 						tai.del(loc, "main", "shellbat.suprx")
@@ -39,10 +47,57 @@ function plugins_installation(sel)
 					end
 				end
 			elseif plugins[sel].path == "vitastick.skprx" and not game.exists("VITASTICK") then
-				game.install("resources/plugins/vitastick.vpk")
+				__file = "vitastick.vpk"
+				game.install("resources/plugins/vitastick.vpk",false)
 			elseif plugins[sel].path == "ModalVol.suprx" and not game.exists("MODALVOLM") then
-				game.install("resources/plugins/VolumeControl.vpk")
+				__file = "VolumeControl.vpk"
+				game.install("resources/plugins/VolumeControl.vpk",false)
+			elseif plugins[sel].path == "monaural.skprx" and not game.exists("AKRK00003") then
+				__file = "MonauralConfig.vpk"
+				game.install("resources/plugins/MonauralConfig.vpk",false)
+			elseif plugins[sel].path == "VitaGrafix.suprx" and not game.exists("VGCF00001") then
+				files.delete("tmp")
+				if back2 then back2:blit(0,0) end
+					message_wait()
+				os.delay(250)
+
+				local onNetGetFileOld = onNetGetFile
+				onNetGetFile = nil
+				http.download("https://github.com/Kirezar/VitaGrafixConfigurator/releases/latest/","tmp")
+				onNetGetFile = onNetGetFileOld
+				if files.exists("tmp") then
+					local objh = html.parsefile("tmp")
+					if objh then
+
+						local links = objh:findall(html.TAG_A)
+						if links then
+							--os.message("Links "..#links)
+							for i=1,#links do
+								if links[i].href then
+									if links[i].href:find("VitaGrafixConfigurator.vpk",1,true) then
+										--os.message(links[i].href)
+										onNetGetFile = onNetGetFileOld
+										__file = "VitaGrafixConfigurator.vpk"
+										http.download("https://github.com"..links[i].href,"ux0:data/AUTOPLUGIN2/VitaGrafixConfigurator.vpk")
+										if files.exists("ux0:data/AUTOPLUGIN2/VitaGrafixConfigurator.vpk") then
+											game.install("ux0:data/AUTOPLUGIN2/VitaGrafixConfigurator.vpk",false)
+											break
+										end
+									end
+								end
+							end
+						else
+							os.message(LANGUAGE["LANG_ONLINE_FAIL_CONEXION"])
+						end
+					else
+						os.message(LANGUAGE["UPDATE_WIFI_IS_ON"])
+					end
+				else
+					os.message(LANGUAGE["UPDATE_WIFI_IS_ON"])
+				end
+
 			end
+			__file = ""
 
 			if install then
 
@@ -81,7 +136,7 @@ function plugins_installation(sel)
 
 				if plugins[sel].path == "adrenaline_kernel.skprx" then pathline_in_config = "ux0:app/PSPEMUCFW/sce_module/adrenaline_kernel.skprx" end
 
-				local idx = nil
+				idx = nil
 
 				if plugins[sel].section2 then
 					idx = tai.find(loc, plugins[sel].section2, path_tai..plugins[sel].path2)
@@ -92,8 +147,53 @@ function plugins_installation(sel)
 				idx = tai.find(loc, plugins[sel].section, pathline_in_config)
 				if idx then tai.del(loc, plugins[sel].section,  pathline_in_config) end
 
-				tai.put(loc, plugins[sel].section,  pathline_in_config)
+				
+				local plugin_name = plugins[sel].name
 
+				
+				if plugins[sel].path:find("udcd_uvc_",1,true) then
+					--os.message("offs")
+					if hw.model() == "Vita Fat" then
+						tai.put(loc, plugins[sel].section,  path_tai.."udcd_uvc_oled_off.skprx")
+						plugin_name = "udcd_uvc_oled"
+					else
+						tai.put(loc, plugins[sel].section,  path_tai.."udcd_uvc_lcd_off.skprx")
+						plugin_name = "udcd_uvc_lcd"
+					end
+				else
+
+					if plugins[sel].path:lower() == "custom_boot_splash.skprx" or (udcd or plugins[sel].path:lower() == "udcd_uvc.skprx") then
+						--os.message("1")
+						tai.put(loc, plugins[sel].section,  pathline_in_config)
+						if udcd or plugins[sel].path:lower() == "udcd_uvc.skprx" then
+							--os.message("udcd_uvc.skprx")
+							tai.put(loc, "KERNEL",  path_tai.."udcd_uvc.skprx")
+							tai.del(loc, "KERNEL", "udcd_uvc_oled_off.skprx")
+							tai.del(loc, "KERNEL", "udcd_uvc_lcd_off.skprx")
+						end
+
+					else
+						if plugins[sel].path:find("udcd_uvc_",1,true) then
+							if hw.model() == "Vita Fat" then
+								--os.message("udcd_uvc_oled   2")
+								tai.put(loc, plugins[sel].section,  path_tai.."udcd_uvc_oled_off.skprx")
+								plugin_name = "udcd_uvc_oled"
+								tai.del(loc, "KERNEL", "udcd_uvc.skprx")
+							else
+								--os.message("udcd_uvc_lcd   2")
+								tai.put(loc, plugins[sel].section,  path_tai.."udcd_uvc_lcd_off.skprx")
+								plugin_name = "udcd_uvc_lcd"
+								tai.del(loc, "KERNEL", "udcd_uvc.skprx")
+							end
+						else
+							--os.message("2")
+							tai.put(loc, plugins[sel].section,  pathline_in_config)
+						end
+
+					end
+				end
+				
+				--tai.put(loc, plugins[sel].section,  pathline_in_config)
 				--Write
 				tai.sync(loc)
 
@@ -111,7 +211,7 @@ function plugins_installation(sel)
 				end
 
 				if back2 then back2:blit(0,0) end
-					message_wait(plugins[sel].name.."\n\n"..LANGUAGE["STRING_INSTALLED"])
+					message_wait(plugin_name.."\n\n"..LANGUAGE["STRING_INSTALLED"])
 				os.delay(1500)
 
 				change = true
@@ -131,24 +231,20 @@ function autoplugin()
 
 	--os.message(tostring(#tai[partition].gameid[ section[sel_section] ].prx))
 	--tai[mount].gameid[ obj1 ].prx[idx].path
+
 	--Init load configs
+	loc = 1
 	tai.load()
 	local partition = 0
 	if tai[__UX0].exist then partition = __UX0
-	elseif tai[__UR0].exist then partition = __UR0
+	elseif tai[__UR0].exist then partition,loc = __UR0,2
 	end
-
+	path_tai = locations[loc].."tai/"
 
 	local limit = 10
 	local scr = newScroll(plugins,limit)
 	local xscr1,toinstall = 10,0
 	scr.ini,scr.lim,scr.sel = 1,limit,1
-
-	--Init load configs
-	loc = 1
-	tai.load()
-	if tai[__UR0].exist then loc = 2 end
-	path_tai = locations[loc].."tai/"
 
 	while true do
 		buttons.read()
@@ -173,19 +269,19 @@ function autoplugin()
 
 			if i == scr.sel then draw.offsetgradrect(3,y-5,944,27,color.shine:a(75),color.shine:a(135),0x0,0x0,21) end
 
-			local idx = tai.find(partition,plugins[i].section,plugins[i].path)
+			idx = tai.find(partition,plugins[i].section,plugins[i].path)
 			if idx != nil then
 				--draw.fillrect(920,y-5,2,25,color.shine:a(50))
 				if files.exists(tai[partition].gameid[ plugins[i].section ].prx[idx].path) then
-					if dotg then dotg:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.green:a(205)) end
+					if dotg then dotg:blit(924,y-1) else draw.fillrect(924,y-2,21,21,color.green:a(205)) end
 				else
-					if doty then doty:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.yellow:a(205)) end
+					if doty then doty:blit(924,y-1) else draw.fillrect(924,y-2,21,21,color.yellow:a(205)) end
 				end
 			end
 			--[[
 			--local sub 
 			--if os.module("repatch") then
-				--local idx = tai.find(partition,plugins[i].section,plugins[i].path)
+				--idx = tai.find(partition,plugins[i].section,plugins[i].path)
 				--if idx != nil then
 					--draw.fillrect(920,y-5,2,25,color.shine:a(50))
 					--if files.exists(tai[partition].gameid[ plugins[i].section ].prx[idx].path) then
@@ -199,7 +295,12 @@ function autoplugin()
 			
 			--	if dotg then dotg:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.green:a(205)) end
 			--end
-			screen.print(40,y, plugins[i].name, 1.0,color.white,color.blue,__ALEFT)
+			if plugins[i].path2 == "kuio.skprx" or plugins[i].path2 == "ioplus.skprx" then
+				screen.print(40,y, plugins[i].name, 1.0,color.white,color.blue,__ALEFT)
+				screen.print(895,y, " ("..plugins[i].path2.." )", 1.0,color.yellow,color.blue,__ARIGHT)
+			else
+				screen.print(40,y, plugins[i].name, 1.0,color.white,color.blue,__ALEFT)
+			end
 
 			if plugins[i].inst then
 				screen.print(5,y," >> ",1,color.white,color.green)
@@ -218,9 +319,9 @@ function autoplugin()
 		--end
 
 		if screen.textwidth(plugins[scr.sel].desc) > 925 then
-			xscr1 = screen.print(xscr1, 405, plugins[scr.sel].desc,1,color.white,color.blue,__SLEFT,935)
+			xscr1 = screen.print(xscr1, 405, plugins[scr.sel].desc,1,color.green, 0x0,__SLEFT,935)
 		else
-			screen.print(480, 405, plugins[scr.sel].desc,1,color.white,color.blue,__ACENTER)
+			screen.print(480, 405, plugins[scr.sel].desc,1,color.green, 0x0,__ACENTER)
 		end
 
 		if tai[__UX0].exist and tai[__UR0].exist then
@@ -256,6 +357,17 @@ function autoplugin()
 			end
 			os.delay(100)
 			return
+		end
+
+		--Exit
+		if buttons.start then
+			if change then
+				os.message(LANGUAGE["STRING_PSVITA_RESTART"])
+				os.delay(250)
+				buttons.homepopup(1)
+				power.restart()
+			end
+			os.exit()
 		end
 
 		if scr.maxim > 0 then

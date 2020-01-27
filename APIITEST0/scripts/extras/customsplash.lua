@@ -68,6 +68,15 @@ end
 
 function customimgsplash()
 
+	--Init load configs
+	loc = 1
+	tai.load()
+	local partition = 0
+	if tai[__UX0].exist then partition = __UX0
+	elseif tai[__UR0].exist then partition,loc = __UR0,2
+	end
+	path_tai = locations[loc].."tai/"
+
 	local png, custom_boot = files.listfiles("ux0:CustomBootsplash/"), {}
 
 	if png then
@@ -171,6 +180,7 @@ function customimgsplash()
 
 			if buttons.accept then
 
+				files.copy("resources/plugins/custom_boot_splash.skprx",path_tai)
 				if img2splashbin(custom_boot[scroll.sel].img,true) == 1 then
 					if os.message(LANGUAGE["RESTART_QUESTION"],1) == 1 then
 						if back then back:blit(0,0) end

@@ -81,11 +81,14 @@ SPANISH["INSTALLP_WARNING_REFOOD"] =					"Para que el Plugin ReFood funcione, se
 SPANISH["INSTALLP_OSK_TITLE"] =							"Texto para Custom Warning"
 SPANISH["INSTALLP_OSK_TEXT"] =							"Escribe tu TEXTO aquí"
 
+SPANISH["INSTALLP_WARNING_UDCD"] =						"Plugin udcd solo trabaja en Fat/Slim"
+
 --Uninstall Plugins
 SPANISH["UNINSTALLP_TITLE"] =							"Administrador de Plugins"
 SPANISH["UNINSTALLP_NOCONFIG_FOUND"] =					"No se encontró config.txt en: "
 SPANISH["UNINSTALLP_PLUGIN"] =							"Para desinstalar Plugin"
 SPANISH["UNINSTALLP_LEFTRIGHT_SECTION"] =				"para cambiar de sección"
+SPANISH["UNINSTALLP_QUESTION"] =						"Realmente deseas desinstalar ?"
 SPANISH["UNINSTALLP_EMPTY"] =							"Vacio !!!"
 
 --install sd2vita
@@ -239,7 +242,7 @@ SPANISH["INSTALLP_DESC_UDCDUVC"] =						"Permite que la PS Vita funcione como un
 SPANISH["INSTALLP_DESC_UDCDUVCO"] =					    "(Version para Vitas OLED FAT) Permite que la PS Vita funcione como un dispositivo UVC para transmitir su pantalla a través de USB a su computadora con la pantalla apagada. No hagas esto con el plugin oficial de xerpi, solo con el plugin para LCD y OLED"
 SPANISH["INSTALLP_DESC_UDCDUVCL"] =					    "(Version para Vitas LED SLIM) Permite que la PS Vita funcione como un dispositivo UVC para transmitir su pantalla a través de USB a su computadora con la pantalla apagada. No hagas esto con el plugin oficial de xerpi, solo con el plugin para LCD y OLED"
 SPANISH["INSTALLP_DESC_VIIMOTE"] =						"Controla tu PS Vita con un WiiMote"
-SPANISH["INSTALLP_DESC_VITASTICK"] =					"Permite usar la PS Vita como un mando de juego por USB"
+SPANISH["INSTALLP_DESC_VITASTICK"] =					"Permite usar la PS Vita como un mando de juego por USB  (Requiere vitastick.vpk)"
 SPANISH["INSTALLP_DESC_KUIO"] =							"Permite a los módulos de usuario acceder a ux0:data para operaciones de I/O básicas. Puede ser necesario para ciertos plugins específicos"
 SPANISH["INSTALLP_DESC_ADRENALINE"] =					"Permite ejecutar Adrenaline con un solo toque"
 SPANISH["INSTALLP_DESC_DSMOTION"] = 					"Soporte al control de movimiento del DualShock para PlayStation TV"
@@ -266,7 +269,7 @@ SPANISH["INSTALLP_DESC_LOLITA"] =						"Sets your Vita's clocks to maximum all t
 SPANISH["INSTALLP_DESC_LOLITA4"] =						"Sets your Vita's clocks to 444 mhz all the time and disables limitations like low brightness and no Wi-Fi on intensive games."
 SPANISH["INSTALLP_DESC_PSVSHELL"] =						"Yet another overclocking plugin"
 SPANISH["INSTALLP_DESC_SYSCALL6"] =						"A tool that patches Playstation Vita's lv0's secure_kernel's syscall 6 (SELF/RVK checks)"
-SPANISH["INSTALLP_DESC_MONAURAL"] =						"Mono audio and channel balance for Playstation Vita(requires vpk of the application)."
+SPANISH["INSTALLP_DESC_MONAURAL"] =						"Mono audio and channel balance for Playstation Vita (requires MonauralConfig.vpk)"
 SPANISH["INSTALLP_DESC_MUPREMIUM"] =					"Enable background music play for any game or application."
 
 SPANISH["INSTALLP_DESC_CUSTOMBOOTSPLASH"] =				"Este plugin puede mostrar una Imagen Personalizada en el arranque de PS Vita/PS TV. Requiere Enso"
@@ -318,7 +321,7 @@ SPANISH["INSTALLP_DESC_REMAPSV"] =						"remaPSV es un plugin de remapeo que te 
 SPANISH["INSTALLP_DESC_FORCELANG"] =					"Plugin de taiHEN para cambiar el idioma de una aplicación"
 SPANISH["INSTALLP_DESC_SHOWINFO"] =						"Simple plugin that shows title_id, stitle and app_ver of the running application."
 SPANISH["INSTALLP_DESC_SHOWINFOFU"] =					"Simple plugin that shows title_id, stitle and app_ver of the running application.(full version)"
-SPANISH["INSTALLP_DESC_MODALVOL"] =				    	"This pack consits of applications to control system audio volume on PS vita in real time without closing games"
+SPANISH["INSTALLP_DESC_MODALVOL"] =				    	"This pack consits of applications to control system audio volume on PS vita in real time without closing games (Require VolumeControl.vpk)"
 
 --*NPXS10013
 SPANISH["INSTALLP_DESC_PS4LINK"] =			      		"Plugin de taiHEN que permite forzar la configuración de botones preferida en Juego Remoto (PS4)"

@@ -29,7 +29,7 @@ function screen.flip()
 			elseif back then back:blit(0,0) end
 
 			local url = string.format("https://github.com/%s/%s/releases/download/%s/%s", APP_REPO, APP_PROJECT, string.format("%X.%02X",major, minor), APP_PROJECT..".vpk")
-			local path = "ux0:data/"..APP_PROJECT..".vpk"
+			local path2vpk = "ux0:data/"..APP_PROJECT..".vpk"
 
 			local onAppInstallOld = onAppInstall
 			function onAppInstall(step, size_argv, written, file, totalsize, totalwritten)
@@ -57,7 +57,7 @@ function screen.flip()
 				return 1;
 			end
 
-			if http.download(url, path).success then
+			if http.download(url, path2vpk).success and files.exists(path2vpk) then
 				files.mkdir("ux0:/data/1luapkg")
 				files.copy("eboot.bin","ux0:/data/1luapkg")
 				files.copy("git/updater/script.lua","ux0:/data/1luapkg/")
@@ -66,7 +66,7 @@ function screen.flip()
 				files.copy("git/updater/param.sfo","ux0:/data/1luapkg/sce_sys/")
 				game.installdir("ux0:/data/1luapkg")
 				files.delete("ux0:/data/1luapkg")
-				game.launch(string.format("ONEUPDATE&%s&%s&%s&%s", os.titleid(), path, files.cdir().."/lang/", __LANG)) -- Goto installer extern!
+				game.launch(string.format("ONEUPDATE&%s&%s&%s&%s", os.titleid(), path2vpk, files.cdir().."/lang/", __LANG)) -- Goto installer extern!
 			end
 			onAppInstall = onAppInstallOld
 			onNetGetFile = onNetGetFileOld

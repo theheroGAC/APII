@@ -12,8 +12,9 @@
 __file = ""
 function onNetGetFile(size,written,speed)
 	if back then back:blit(0,0) end
+	draw.fillrect(0,0,960,40, color.green:a(100))
 
-	screen.print(480,400,tostring(__file),1,color.white, color.blue:a(135),__ACENTER)
+	screen.print(480,12,tostring(__file),1.2,color.white, color.blue:a(135),__ACENTER)
 
 	screen.print(480,470,tostring(files.sizeformat(written or 0)).." / "..tostring(files.sizeformat(size or 0)),1,color.white, color.blue:a(135),__ACENTER)
 
@@ -24,6 +25,32 @@ function onNetGetFile(size,written,speed)
 	screen.flip()
 
 	return 1
+end
+
+function onAppInstall(step, size_argv, written, file, totalsize, totalwritten)
+
+	if back then back:blit(0,0) end
+	draw.fillrect(0,0,960,40, color.green:a(100))
+
+    if step == 1 then -- Only msg of state
+		screen.print(10,12,LANGUAGE["UPDATER_SEARCH_UNSAFE_VPK"].."   "..tostring(__file))
+	elseif step == 2 then											-- Warning Vpk confirmation!
+		return 10 -- Ok
+	elseif step == 3 then -- Unpack :P
+
+		screen.print(10,12,LANGUAGE["UPDATER_UNPACK_VPK"])
+		screen.print(10,55,LANGUAGE["UPDATER_FILE"]..tostring(file))
+		screen.print(10,75,LANGUAGE["UPDATER_PERCENT"]..math.floor((written*100)/size_argv).." %")
+
+		l = (totalwritten*940)/totalsize
+		screen.print(3+l,495,math.floor((totalwritten*100)/totalsize).."%",0.8,0xFFFFFFFF,0x0,__ACENTER)
+			draw.fillrect(10,524,l,6,color.new(0,255,0))
+				draw.circle(10+l,526,6,color.new(0,255,0),30)
+
+	elseif step == 4 then											-- Promote or install
+		screen.print(10,12,LANGUAGE["UPDATER_INSTALLING"].."   "..tostring(__file))
+	end
+	screen.flip()
 end
 
 function write_config()

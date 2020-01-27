@@ -81,11 +81,14 @@ ITALIAN["INSTALLP_WARNING_REFOOD"] =					"Il Plugin Refood per funzionare deve e
 ITALIAN["INSTALLP_OSK_TITLE"] =							"Testo per Custom Warning"
 ITALIAN["INSTALLP_OSK_TEXT"] =							"Inserisci il testo qui"
 
+ITALIAN["INSTALLP_WARNING_UDCD"] =						"Plugin udcd to work in Fat/Slim"
+
 --Uninstall Plugins
 ITALIAN["UNINSTALLP_TITLE"] =							"Plugins Manager"
 ITALIAN["UNINSTALLP_NOCONFIG_FOUND"] =					"Nessun file config.txt trovato su: "
 ITALIAN["UNINSTALLP_PLUGIN"] =							"Per disinstallare i plugin"
 ITALIAN["UNINSTALLP_LEFTRIGHT_SECTION"] =				"Per cambiare sezione"
+ITALIAN["UNINSTALLP_QUESTION"] =						"Really wish to Uninstall ?"
 ITALIAN["UNINSTALLP_EMPTY"] =							"EMPTY !!!"
 
 --install sd2vita
@@ -239,7 +242,7 @@ ITALIAN["INSTALLP_DESC_UDCDUVC"] =						"Consente di trasmettere in streaming la
 ITALIAN["INSTALLP_DESC_UDCDUVCO"] =						"(OLED SOLO) Consente di trasmettere in streaming lo schermo Vita sul PC tramite USB a schermo spento, cosa che il plugin ufficiale non è in grado di eseguire"
 ITALIAN["INSTALLP_DESC_UDCDUVCL"] =						"(LCD SOLO) Consente di trasmettere in streaming lo schermo Vita sul PC tramite USB a schermo spento, cosa che il plugin ufficiale non è in grado di eseguire"
 ITALIAN["INSTALLP_DESC_VIIMOTE"] =						"Controlla la tua PSVita utilizzando un WiiMote"
-ITALIAN["INSTALLP_DESC_VITASTICK"] =					"La PSVita diventa come un controller di gioco USB"
+ITALIAN["INSTALLP_DESC_VITASTICK"] =					"La PSVita diventa come un controller di gioco USB  (Require vitastick.vpk)"
 ITALIAN["INSTALLP_DESC_KUIO"] =							"Consente ai moduli utente di accedere a ux0:datA per operazioni di I/O di base. Potrebbe essere necessario per determinati plugin specifici"
 ITALIAN["INSTALLP_DESC_ADRENALINE"] =					"Ti permette di eseguire Adrenaline con un solo tocco"
 ITALIAN["INSTALLP_DESC_DSMOTION"] = 					"Supporto DualShock motion control per PlayStation TV"
@@ -266,7 +269,7 @@ ITALIAN["INSTALLP_DESC_LOLITA"] =						"Sets your Vita's clocks to maximum all t
 ITALIAN["INSTALLP_DESC_LOLITA4"] =						"Sets your Vita's clocks to 444 mhz all the time and disables limitations like low brightness and no Wi-Fi on intensive games."
 ITALIAN["INSTALLP_DESC_PSVSHELL"] =						"Yet another overclocking plugin"
 ITALIAN["INSTALLP_DESC_SYSCALL6"] =						"A tool that patches Playstation Vita's lv0's secure_kernel's syscall 6 (SELF/RVK checks)"
-ITALIAN["INSTALLP_DESC_MONAURAL"] =						"Mono audio and channel balance for Playstation Vita(requires vpk of the application)."
+ITALIAN["INSTALLP_DESC_MONAURAL"] =						"Mono audio and channel balance for Playstation Vita (requires MonauralConfig.vpk)"
 ITALIAN["INSTALLP_DESC_MUPREMIUM"] =					"Enable background music play for any game or application."
 
 ITALIAN["INSTALLP_DESC_CUSTOMBOOTSPLASH"] =				"Questo plugin può visualizzare/personalizzare il Boot Splash su PS Vita/PSTV all'avvio. Richiede ENSO"
@@ -318,7 +321,7 @@ ITALIAN["INSTALLP_DESC_REMAPSV"] =						"remaPSV is a remap plugin allowing you 
 ITALIAN["INSTALLP_DESC_FORCELANG"] =					"A taiHEN plugin for overriding an application's language"
 ITALIAN["INSTALLP_DESC_SHOWINFO"] =						"Simple plugin that shows title_id, stitle and app_ver of the running application."
 ITALIAN["INSTALLP_DESC_SHOWINFOFU"] =					"Simple plugin that shows title_id, stitle and app_ver of the running application.(full version)"
-ITALIAN["INSTALLP_DESC_MODALVOL"] =				    	"This pack consits of applications to control system audio volume on PS vita in real time without closing games"
+ITALIAN["INSTALLP_DESC_MODALVOL"] =				    	"This pack consits of applications to control system audio volume on PS vita in real time without closing games (Require VolumeControl.vpk)"
 
 --*NPXS10013
 ITALIAN["INSTALLP_DESC_PS4LINK"] =			        	"taiHEN plugin that allows to force preferred Remote Play button configuration"

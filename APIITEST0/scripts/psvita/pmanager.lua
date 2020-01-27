@@ -15,7 +15,7 @@ function pluginsmanager()
 
 	update_translations(plugins, tb_cop)
 
-	table.insert(tb_cop, { name = "Kuio by Rinnegatamante", path = "kuio.skprx", section = "KERNEL",  path2 = false, section2 = false })
+	table.insert(tb_cop, { name = "Kuio by Rinnegatamante", path = "kuio.skprx", section = "KERNEL"})
 	table.insert(tb_cop, { name = "MiniVitaTV by TheOfficialFloW vbeta0.2", path = "minivitatv.skprx", section = "KERNEL",  path2 = "ds3.skprx", section2 = "KERNEL" })
 
 	--Init load configs
@@ -25,7 +25,7 @@ function pluginsmanager()
 	elseif tai[__UR0].exist then partition = __UR0
 	end
 
-	local limtpm, scrollp, y1 = 8, {}, 70
+	local limtpm, scrollp, y1, xscr1 = 8, {}, 70 , 10
 
 	local section,sel_section = {},1
 	local tmp={}
@@ -48,6 +48,16 @@ function pluginsmanager()
 			table.insert(section, 3, tmp[i])
 		else
 			table.insert(section, tmp[i])
+		end
+	end
+
+	for i=1,#section do
+		for j=1,#tai[partition].gameid[ section[i] ].prx do
+			for k=1,#plugins do
+				if files.nopath(tai[partition].gameid[ section[i] ].prx[j].path:lower()) == plugins[k].path:lower() then
+					tai[partition].gameid[ section[i] ].prx[j].desc = plugins[k].desc
+				end
+			end
 		end
 	end
 
@@ -88,10 +98,21 @@ function pluginsmanager()
 					local y = y1
 
 					for i=scrollp.ini, scrollp.lim do
-						if i == scrollp.sel then draw.offsetgradrect(0,y-10,940,35,color.shine:a(75),color.shine:a(135),0x0,0x0,21) end
+						if i == scrollp.sel then
+							draw.offsetgradrect(0,y-10,940,35,color.shine:a(75),color.shine:a(135),0x0,0x0,21)
+							if tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].desc then
+								if screen.textwidth(tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].desc) > 925 then
+									xscr1 = screen.print(xscr1, 405, tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].desc,1,color.green, 0x0,__SLEFT,935)
+								else
+									screen.print(480,405,tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].desc,1.0,color.green, 0x0, __ACENTER)
+								end
+							end
+						end
 
 						if not files.exists(tai[partition].gameid[ section[sel_section] ].prx[i].path) then ccolor = color.orange else ccolor = color.white end
+
 						screen.print(20,y, tai[partition].gameid[ section[sel_section] ].prx[i].path,1,ccolor,0x0)
+
 						y+=40
 					end
 				end
@@ -105,7 +126,7 @@ function pluginsmanager()
 					draw.fillrect(950, ybar-2 + ((hbar-pos_height)/(scrollp.maxim-1))*(scrollp.sel-1), 8, pos_height, color.new(0,255,0))
 				end
 
-				screen.print(480,405,locations[partition].."tai/config.txt",1.3,color.green, 0x0, __ACENTER)
+				--screen.print(480,405,locations[partition].."tai/config.txt",1.3,color.green, 0x0, __ACENTER)
 
 				if buttonskey then buttonskey:blitsprite(5,448,saccept) end
 				screen.print(30,450,LANGUAGE["UNINSTALLP_PLUGIN"],1,color.white,color.black,__ALEFT)
@@ -133,7 +154,7 @@ function pluginsmanager()
 
 		--------------------------	Controls	--------------------------
 		
-		if buttons.released.cancel then break end
+		if buttons.cancel then break end
 
 		--Exit
 		if buttons.start then
@@ -147,90 +168,96 @@ function pluginsmanager()
 		end
 
 		if scrollp.maxim > 0 then
-			if buttons.up or buttons.analogly < -60 then scrollp:up() end
-			if buttons.down or buttons.analogly > 60 then scrollp:down() end		
+			if buttons.up or buttons.analogly < -60 then
+				if scrollp:up() then xscr1 = 10 end
+			end
+			if buttons.down or buttons.analogly > 60 then
+				if scrollp:down() then xscr1 = 10 end
+			end
 
 			if buttons.accept then
 				if tai[partition].gameid[ section[sel_section] ] then
 
-					table.remove(tai[partition].raw, tai[partition].gameid[section[sel_section]].prx[scrollp.sel].line)
-					local name = files.nopath(tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].path:lower())
+					if os.message(LANGUAGE["UNINSTALLP_QUESTION"].."\n\n"..files.nopath(tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].path:lower()),1) == 1 then
+						table.remove(tai[partition].raw, tai[partition].gameid[section[sel_section]].prx[scrollp.sel].line)
+						local name = files.nopath(tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].path:lower())
 
-					--No delete
-					if name != "adrenaline_kernel.skprx" then
-						local subpath = tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].path
-						if #subpath > 4 then
-							--os.message("1\n"..subpath)
-						--	files.delete(subpath)
-						end
-					end
-
-					tai.sync(partition)
-					tai.load()
-
-					--Yamt
-					if name == "yamt.suprx" then
-						--os.message("yamt")
-						if files.exists("ur0:tai/boot_config.txt") then
-							local cont = {}
-							for line in io.lines("ur0:tai/boot_config.txt") do
-								if line:byte(#line) == 13 then line = line:sub(1,#line-1) end --Remove CR == 13
-								table.insert(cont,line)
+						--No delete
+						if name != "adrenaline_kernel.skprx" then
+							local subpath = tai[partition].gameid[ section[sel_section] ].prx[scrollp.sel].path
+							if #subpath > 4 then
+								--os.message("1\n"..subpath)
+							--	files.delete(subpath)
 							end
-							if cont then
-								for i=#cont,1,-1 do
-									if string.find(cont[i]:lower(), "ur0:tai/yamt.skprx", 1, true) or string.find(cont[i]:upper(), "YAMT", 1, true) then
-										table.remove(cont,i)
+						end
+
+						tai.sync(partition)
+						tai.load()
+
+						--Yamt
+						if name == "yamt.suprx" then
+							--os.message("yamt")
+							if files.exists("ur0:tai/boot_config.txt") then
+								local cont = {}
+								for line in io.lines("ur0:tai/boot_config.txt") do
+									if line:byte(#line) == 13 then line = line:sub(1,#line-1) end --Remove CR == 13
+									table.insert(cont,line)
+								end
+								if cont then
+									for i=#cont,1,-1 do
+										if string.find(cont[i]:lower(), "ur0:tai/yamt.skprx", 1, true) or string.find(cont[i]:upper(), "YAMT", 1, true) then
+											table.remove(cont,i)
+										end
+									end
+									local file = io.open("ur0:tai/boot_config_backup.txt", "w+")
+									for s,t in pairs(cont) do
+										file:write(string.format('%s\n', tostring(t)))
+									end
+									file:close()
+								end
+							end
+							--files.delete("ux0:tai/yamt.skprx")
+							--files.delete("ur0:tai/yamt.skprx")
+						end
+
+						for i=#tb_cop,1,-1 do
+							if name == tb_cop[i].path:lower() then
+								if tb_cop[i].section2 and tai[partition].gameid[ tb_cop[i].section2 ] then
+									del_plugin_tai(partition, tb_cop[i].section2, tb_cop[i].path2)
+								end
+							end
+							if tb_cop[i].path2 and (name == tb_cop[i].path2:lower()) then
+								if tb_cop[i].section and tai[partition].gameid[ tb_cop[i].section ] then
+									del_plugin_tai(partition, tb_cop[i].section, tb_cop[i].path)
+								end
+							end
+						end
+
+						--update
+						if tai[partition].gameid[ section[sel_section] ] then
+							scrollp = newScroll( tai[partition].gameid[ section[sel_section] ].prx, limtpm)
+							if scrollp.maxim <= 0 then
+								for i=1,#section do
+									if section[sel_section] == section[i] then
+										--os.message(section[i])
+										table.remove(section,i)
+										sel_section +=1
+										if sel_section > #section then sel_section = 1 end
+										if tai[partition].gameid[ section[sel_section] ] then
+											scrollp = newScroll( tai[partition].gameid[ section[sel_section] ].prx, limtpm)
+										else
+											scrollp = newScroll( {}, limtpm)
+										end
+										break
 									end
 								end
-								local file = io.open("ur0:tai/boot_config_backup.txt", "w+")
-								for s,t in pairs(cont) do
-									file:write(string.format('%s\n', tostring(t)))
-								end
-								file:close()
 							end
+						--else
+						--	scrollp = newScroll( {}, limtpm)
 						end
-						--files.delete("ux0:tai/yamt.skprx")
-						--files.delete("ur0:tai/yamt.skprx")
+						change = true
+						buttons.homepopup(0)
 					end
-
-					for i=#tb_cop,1,-1 do
-						if name == tb_cop[i].path then
-							if tb_cop[i].section2 and tai[partition].gameid[ tb_cop[i].section2 ] then
-								del_plugin_tai(partition, tb_cop[i].section2, tb_cop[i].path2)
-							end
-						end
-						if name == tb_cop[i].path2 then
-							if tb_cop[i].section and tai[partition].gameid[ tb_cop[i].section ] then
-								del_plugin_tai(partition, tb_cop[i].section, tb_cop[i].path)
-							end
-						end
-					end
-
-					--update
-					if tai[partition].gameid[ section[sel_section] ] then
-						scrollp = newScroll( tai[partition].gameid[ section[sel_section] ].prx, limtpm)
-						if scrollp.maxim <= 0 then
-							for i=1,#section do
-								if section[sel_section] == section[i] then
-									os.message(section[i])
-									table.remove(section,i)
-									sel_section +=1
-									if sel_section > #section then sel_section = 1 end
-									if tai[partition].gameid[ section[sel_section] ] then
-										scrollp = newScroll( tai[partition].gameid[ section[sel_section] ].prx, limtpm)
-									else
-										scrollp = newScroll( {}, limtpm)
-									end
-									break
-								end
-							end
-						end
-					--else
-					--	scrollp = newScroll( {}, limtpm)
-					end
-					change = true
-					buttons.homepopup(0)
 				end
 			end
 
