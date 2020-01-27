@@ -1,3 +1,14 @@
+#AutoPlugin 7 TEST
+Release v0.05 (TEST)
+++ Showing which plugins require to have ioplus or kuio
+installed (regardless of version installed)
+++ Fix correctly check in plugins : CustomBootSplash and Udcd
+CustomBootSplash is 1st
+udcd (normal version) is 2st
+++ Add Download VitaConfigurator.vpk when install VitaGrafix plugin.
+++ Add descriptions of plugins in the section Uninstall Plugins
+++ Add Confirmation to Uninstall Plugins
+
 #AutoPlugin 6 TEST
 Release v0.04 (TEST)
 ++ Update TransparentImpose					v1.0
