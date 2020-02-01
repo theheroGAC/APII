@@ -1,4 +1,9 @@
 #AutoPlugin 8 TEST
+Release v0.07 (TEST)
+++ Fix Message string in Custom Boot Splash
+++ Update Volume Profile v2.1.0
+
+#AutoPlugin 8 TEST
 Release v0.06 (TEST)
 ++ Readme online in the list of plugins (press triangle, Wifi required)
 ++ Fix missing trimpose.txt in TransparentImpose plugin
