@@ -276,7 +276,7 @@ SPANISH["INSTALLP_DESC_MONAURAL"] =						"Mono audio and channel balance for Pla
 SPANISH["INSTALLP_DESC_MUPREMIUM"] =					"Enable background music play for any game or application."
 
 SPANISH["INSTALLP_DESC_CUSTOMBOOTSPLASH"] =				"Este plugin puede mostrar una Imagen Personalizada en el arranque de PS Vita/PS TV. Requiere Enso"
-SPANISH["INSTALLP_DESC_CONVERTBOOTSPLASH"] =			"¿Poner tu Imagen Personalizada en el arranque de la PS Vita?"
+SPANISH["CUSTOMBOOTSPLASH_QUESTION"] =					"Set this image as Custom Boot Splash ?"
 SPANISH["INSTALLP_DESC_NOFINDSPLASH"] =					"Coloca la imagen elegida en ux0:CustomBootsplash/\n(Renómbrala como splash.png y con tamaño 960x544)"
 SPANISH["INSTALLP_DESC_SPLASHGH"] =						"El tamaño de la imagen debe ser: 960 * 544"
 SPANISH["INSTALLP_DESC_BOOTSPLASH_DONE"] =				"¡boot_splash.bin CREADO!"
