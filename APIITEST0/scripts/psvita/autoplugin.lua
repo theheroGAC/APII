@@ -226,11 +226,7 @@ function plugins_installation(sel)
 
 end
 
-
 function autoplugin()
-
-	--os.message(tostring(#tai[partition].gameid[ section[sel_section] ].prx))
-	--tai[mount].gameid[ obj1 ].prx[idx].path
 
 	--Init load configs
 	loc = 1
@@ -271,30 +267,13 @@ function autoplugin()
 
 			idx = tai.find(partition,plugins[i].section,plugins[i].path)
 			if idx != nil then
-				--draw.fillrect(920,y-5,2,25,color.shine:a(50))
 				if files.exists(tai[partition].gameid[ plugins[i].section ].prx[idx].path) then
 					if dotg then dotg:blit(924,y-1) else draw.fillrect(924,y-2,21,21,color.green:a(205)) end
 				else
 					if doty then doty:blit(924,y-1) else draw.fillrect(924,y-2,21,21,color.yellow:a(205)) end
 				end
 			end
-			--[[
-			--local sub 
-			--if os.module("repatch") then
-				--idx = tai.find(partition,plugins[i].section,plugins[i].path)
-				--if idx != nil then
-					--draw.fillrect(920,y-5,2,25,color.shine:a(50))
-					--if files.exists(tai[partition].gameid[ plugins[i].section ].prx[idx].path) then
-						--if dotg then dotg:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.green:a(205)) end
-					--else
-					--	if doty then doty:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.yellow:a(205)) end
-					--end
-				--end
-			end
-			]]
-			
-			--	if dotg then dotg:blit(924,y-2) else draw.fillrect(924,y-2,21,21,color.green:a(205)) end
-			--end
+
 			if plugins[i].path2 == "kuio.skprx" or plugins[i].path2 == "ioplus.skprx" then
 				screen.print(40,y, plugins[i].name, 1.0,color.white,color.blue,__ALEFT)
 				screen.print(895,y, " ("..plugins[i].path2.." )", 1.0,color.yellow,color.blue,__ARIGHT)
@@ -337,7 +316,7 @@ function autoplugin()
 		screen.print(45,475,LANGUAGE["CLEAN_PLUGINS"],1,color.white,color.black, __ALEFT)
 
 		if buttonskey then buttonskey:blitsprite(10,498,__TRIANGLE) end
-		screen.print(45,500,LANGUAGE["PLUGINS_CUSTOM_PATH"]..": "..path_tai,1,color.white,color.black, __ALEFT)
+		screen.print(45,500,LANGUAGE["PLUGINS_README_ONLINE"],1,color.white,color.black, __ALEFT)
 
 		if buttonskey then buttonskey:blitsprite(10,523,scancel) end
 		screen.print(45,525,LANGUAGE["STRING_BACK"],1,color.white,color.black, __ALEFT)
@@ -389,7 +368,7 @@ function autoplugin()
 			if buttons.accept then
 
 				if back2 then back2:blit(0,0) end
-				message_wait()
+					message_wait()
 				os.delay(1000)
 
 				if toinstall <= 1 then
@@ -424,15 +403,16 @@ function autoplugin()
 				end
 			end
 
-			--Customize install path for plugins
+			--Readme online
 			if buttons.triangle then
-				if folder_tai then
-					folder_tai = false
-					path_tai = locations[loc].."tai/"
-				else
-					folder_tai = true
-					path_tai = locations[loc].."tai/plugins/"
-				end
+				local onNetGetFileOld = onNetGetFile
+				onNetGetFile = nil
+				--if back2 then back2:blit(0,0) end
+				--message_wait()
+				local readme = nil
+				if plugins[scr.sel].link then readme = http.get(plugins[scr.sel].link) end
+				os.dialog(readme or LANGUAGE["PLUGINS_NO_README_ONLINE"], plugins[scr.sel].name.."\n")
+				onNetGetFile = onNetGetFileOld
 			end
 		end
 	end

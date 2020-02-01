@@ -1,3 +1,9 @@
+#AutoPlugin 8 TEST
+Release v0.06 (TEST)
+++ Readme online in the list of plugins (press triangle, Wifi required)
+++ Fix missing trimpose.txt in TransparentImpose plugin
+++ Add Confirmation to set Custom Boot Splash
+
 #AutoPlugin 7 TEST
 Release v0.05 (TEST)
 ++ Showing which plugins require to have ioplus or kuio

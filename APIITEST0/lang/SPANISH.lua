@@ -70,6 +70,9 @@ SPANISH["CLEAN_PLUGINS"] =								"Para limpiar los Plugins seleccionados"
 SPANISH["UNINSTALL_PLUGIN"] =							"Desinstalar plugin(s)"
 SPANISH["LR_SWAP"] =									"Para cambiar entre ux0/ur0"
 SPANISH["PLUGINS_CUSTOM_PATH"] =						"Instalar en ruta personalizada"
+SPANISH["PLUGINS_README_ONLINE"] =						"Ver Readme En Linea" 
+SPANISH["PLUGINS_NO_README_ONLINE"] =					"Readme not available !!!"
+
 --customWarning
 SPANISH["CUSTOMWARNING_MESSAGE"] =						"Recuerda activar el Plugin de Custom Warning"
 

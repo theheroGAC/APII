@@ -70,6 +70,9 @@ ITALIAN["CLEAN_PLUGINS"] =								"Per cancellare tutti i plugin selezionati"
 ITALIAN["UNINSTALL_PLUGIN"] =							"Disinstallare i plugin"
 ITALIAN["LR_SWAP"] =									"Per cambiare la partizione ux0/ur0"
 ITALIAN["PLUGINS_CUSTOM_PATH"] =						"Installa nel percorso personalizzato"
+ITALIAN["PLUGINS_README_ONLINE"] =						"View Readme Online" 
+ITALIAN["PLUGINS_NO_README_ONLINE"] =					"Readme not available !!!"
+
 --customWarning
 ITALIAN["CUSTOMWARNING_MESSAGE"] =						"Ricordati di abilitare il plugin Custom Warning"
 

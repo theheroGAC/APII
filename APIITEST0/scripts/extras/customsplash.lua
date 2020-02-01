@@ -179,31 +179,39 @@ function customimgsplash()
 			if (buttons.down or buttons.analogly > 60) then scroll:down() end
 
 			if buttons.accept then
-
-				files.copy("resources/plugins/custom_boot_splash.skprx",path_tai)
-				if img2splashbin(custom_boot[scroll.sel].img,true) == 1 then
-					if os.message(LANGUAGE["RESTART_QUESTION"],1) == 1 then
-						if back then back:blit(0,0) end
-							message_wait(LANGUAGE["STRING_PSVITA_RESTART"])
-						os.delay(1500)
-						buttons.homepopup(1)
-						power.restart()
-					else
-						custom_boot[scroll.sel].img = image.load(custom_boot[scroll.sel].path)
-						if custom_boot[scroll.sel].img then
-							custom_boot[scroll.sel].img:resize(252,151)
-							custom_boot[scroll.sel].img:setfilter(__IMG_FILTER_LINEAR, __IMG_FILTER_LINEAR)
+				if os.message(LANGUAGE["CUSTOMBOOTSPLASH_QUESTION"],1) == 1 then
+					files.copy("resources/plugins/custom_boot_splash.skprx",path_tai)
+					if img2splashbin(custom_boot[scroll.sel].img,true) == 1 then
+						if os.message(LANGUAGE["RESTART_QUESTION"],1) == 1 then
+							if back then back:blit(0,0) end
+								message_wait(LANGUAGE["STRING_PSVITA_RESTART"])
+							os.delay(1500)
+							buttons.homepopup(1)
+							power.restart()
+						else
+							custom_boot[scroll.sel].img = image.load(custom_boot[scroll.sel].path)
+							if custom_boot[scroll.sel].img then
+								custom_boot[scroll.sel].img:resize(252,151)
+								custom_boot[scroll.sel].img:setfilter(__IMG_FILTER_LINEAR, __IMG_FILTER_LINEAR)
+							end
 						end
+					else
+						os.message(LANGUAGE["INSTALLP_DESC_BOOTSPLASH_FAIL"])
 					end
-				else
-					os.message(LANGUAGE["INSTALLP_DESC_BOOTSPLASH_FAIL"])
 				end
 			end
 
 			if buttons.select then
 				local tmpimg, typeimg = image.import(back)
-				if tmpimg then
-					if typeimg == 2 then
+				if tmpimg and typeimg == 2 then
+					tmpimg:scale(85)
+					tmpimg:center()
+					tmpimg:blit(480,272)
+					screen.flip()
+					os.delay(1500)
+					if os.message(LANGUAGE["CUSTOMBOOTSPLASH_QUESTION"],1) == 1 then
+						files.copy("resources/plugins/custom_boot_splash.skprx",path_tai)
+						tmpimg:reset()
 						if img2splashbin(tmpimg,true) == 1 then
 							if os.message(LANGUAGE["RESTART_QUESTION"],1) == 1 then
 								if back then back:blit(0,0) end
@@ -215,11 +223,11 @@ function customimgsplash()
 						else
 							os.message(LANGUAGE["INSTALLP_DESC_BOOTSPLASH_FAIL"])
 						end
-					else
-						os.message(LANGUAGE["CUSTOMBOOTSPLASH_NOPNG"])
 					end
+				else
+					os.message(LANGUAGE["CUSTOMBOOTSPLASH_NOPNG"])
 				end
-			end
+			end--select
 
 		end--maxim>0
 

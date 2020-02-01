@@ -70,6 +70,9 @@ ENGLISH_US["CLEAN_PLUGINS"] =							"To clean selected plugins"
 ENGLISH_US["UNINSTALL_PLUGIN"] =						"Uninstall the plugin(s)"
 ENGLISH_US["LR_SWAP"] =									"To swap ux0/ur0"
 ENGLISH_US["PLUGINS_CUSTOM_PATH"] =						"Install in the custom path" 
+ENGLISH_US["PLUGINS_README_ONLINE"] =					"View Readme Online" 
+ENGLISH_US["PLUGINS_NO_README_ONLINE"] =				"Readme not available !!!"
+
 --customWarning
 ENGLISH_US["CUSTOMWARNING_MESSAGE"] =					"Remember to enable the Custom Warning plugin"
 
