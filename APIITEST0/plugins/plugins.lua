@@ -67,7 +67,7 @@ plugins = {
 { name = "Quick Volume by cuevavirus v1.2.1", path = "quick_volume.suprx", section = "main", version = "0003", desc = LANGUAGE["INSTALLP_DESC_QUICKVOLUME"], KEY = "INSTALLP_DESC_QUICKVOLUME", link = "https://raw.githubusercontent.com/cuevavirus/QuickVolume/master/README.md", },
 { name = "QAscreenshot by GrapheneCt v1.1", path = "QAscreenshot.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_QASCREEN"], KEY = "INSTALLP_DESC_QASCREEN", link = "https://raw.githubusercontent.com/GrapheneCt/QAscreenshot/master/README.md", },
 { name = "NoSharedFb v1.0", path = "NoSharedFb.suprx", section = "main", version = "0001", desc = LANGUAGE["INSTALLP_DESC_NOSHAREDFB"], KEY = "INSTALLP_DESC_NOSHAREDFB", link = "https://raw.githubusercontent.com/GrapheneCt/NoSharedFb/master/README.md", },
-{ name = "TransparentImpose v1.0 by GrapheneCt", path = "TrImpose.suprx", section = "main", config = "trimpose.txt", version = "0002", desc = LANGUAGE["INSTALLP_DESC_TRIMPOSE"], KEY = "INSTALLP_DESC_TRIMPOSE", link = "https://raw.githubusercontent.com/GrapheneCt/TransparentImpose/master/README.md", },
+{ name = "TransparentImpose v1.0 by GrapheneCt", path = "TrImpose.suprx", section = "main", config = "trimpose.txt", configpath = "ur0:data/", version = "0002", desc = LANGUAGE["INSTALLP_DESC_TRIMPOSE"], KEY = "INSTALLP_DESC_TRIMPOSE", link = "https://raw.githubusercontent.com/GrapheneCt/TransparentImpose/master/README.md", },
 
 --All
 { name = "PSV-VSH MENU by joel16 v3.4", path = "vsh.suprx", section = "ALL", path2 = "kuio.skprx", section2 = "KERNEL", version = "0001", desc = LANGUAGE["INSTALLP_DESC_VSHMENU"], KEY = "INSTALLP_DESC_VSHMENU", link = "https://raw.githubusercontent.com/joel16/PSV-VSH-Menu/master/README.md", },-- Need kuio.skprx
@@ -98,6 +98,6 @@ plugins = {
 { name = "vita-macspoofer by Freakler", path = "macspoofer.suprx", section = "NPXS10015", path2 = "macspoofer.suprx", section2 = "NPXS10016", version = "0001", desc = LANGUAGE["INSTALLP_DESC_MACSPOOF"], KEY = "INSTALLP_DESC_MACSPOOF", link = "https://raw.githubusercontent.com/Freakler/vita-macspoofer/master/README.md", },
 
 --NPXS10036
-{ name = "reScreeny by dots_tb v1.0", path = "reScreeny.suprx", section = "NPXS10036", version = "0001", desc = LANGUAGE["INSTALLP_DESC_RESCREENY"], KEY = "INSTALLP_DESC_RESCREENY", link = "https://raw.githubusercontent.com/dots-tb/reScreeny/master/README.md", },
+{ name = "reScreeny by dots_tb v1.0", path = "reScreeny.suprx", section = "NPXS10036", version = "0002", desc = LANGUAGE["INSTALLP_DESC_RESCREENY"], KEY = "INSTALLP_DESC_RESCREENY", link = "https://raw.githubusercontent.com/dots-tb/reScreeny/master/README.md", },
 
 }
