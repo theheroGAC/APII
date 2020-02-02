@@ -98,6 +98,6 @@ Online_Plugins = {
 { name = "vita-macspoofer by Freakler", path = "macspoofer.suprx", section = "NPXS10015", path2 = "macspoofer.suprx", section2 = "NPXS10016", version = "0001", desc = LANGUAGE["INSTALLP_DESC_MACSPOOF"], KEY = "INSTALLP_DESC_MACSPOOF", link = "https://raw.githubusercontent.com/Freakler/vita-macspoofer/master/README.md", },
 
 --NPXS10036
-{ name = "reScreeny by dots_tb v1.0", path = "reScreeny.suprx", section = "NPXS10036", version = "0002", desc = LANGUAGE["INSTALLP_DESC_RESCREENY"], KEY = "INSTALLP_DESC_RESCREENY", link = "https://raw.githubusercontent.com/dots-tb/reScreeny/master/README.md", },
+{ name = "reScreeny by dots_tb v1.2", path = "reScreeny.suprx", section = "NPXS10036", version = "0002", desc = LANGUAGE["INSTALLP_DESC_RESCREENY"], KEY = "INSTALLP_DESC_RESCREENY", link = "https://raw.githubusercontent.com/dots-tb/reScreeny/master/README.md", },
 
 }
