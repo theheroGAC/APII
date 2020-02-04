@@ -45,13 +45,19 @@ ITALIAN["MENU_PSP_PLUGINS_DESC"] =						"Installa un plugin PSP per Adrenaline"
 
 --Options Extras
 ITALIAN["MENU_EXTRAS_PKGJ_TITLE"] =						"Opzioni per il file Config di PKGJ"
+ITALIAN["MENU_EXTRAS_INSTALL_ITLSENSO"] =				"Download and Install iTLS-Enso vpk"
+ITALIAN["MENU_EXTRAS_INSTALL_BATTFIX"] =				"Download and Install batteryFixer vpk"
 ITALIAN["MENU_EXTRAS_CONVERT_BOOTSPLASH"] =				"Imposta Custom Boot Splash"
 ITALIAN["MENU_EXTRAS_CUSTOM_WARNING"] =					"Imposta Custom Warning Message"
+ITALIAN["MENU_EXTRAS_TRANSP_IMPOSE"] =					"Set Transparent Impose"
 ITALIAN["MENU_EXTRAS_TRANSLATE"] =						"Tradurre Autoplugin II"
 
 ITALIAN["MENU_EXTRAS_CUSTOM_PKG_CONFIG_DESC"] =			"Consente la personalizzazione del file config.txt per PKGj"
-ITALIAN["MENU_EXTRAS_CUSTOMBOOTSPLASH_DESC"] =			"Questo plugin può visualizzare/personalizzare il Boot Splash su PS Vita/PSTV all'avvio. Richiede ENSO"
+ITALIAN["MENU_EXTRAS_CUSTOMBOOTSPLASH_DESC"] =			"Allows you to set a Custom Image when you bootup"
 ITALIAN["MENU_EXTRAS_CUSTOMWARNING_DESC"] =				"Consente di impostare un messaggio di avviso personalizzato anziché l'avviso di epilessia all'avvio con ENSO"
+ITALIAN["MENU_EXTRAS_TRANSPIMPOSE_DESC"] =				"Allows you to set the Level of Transparent (255 = 0% Transparent, 0 = 100% Transparent) values below 30 ae not recommended"
+ITALIAN["MENU_EXTRAS_INSTALL_ITLSENSO_DESC"] =			"Allows Download and Install iTLS-Enso vpk in your Vita (Adds TLS v1.2 to Enso enabled devices)"
+ITALIAN["MENU_EXTRAS_INSTALL_DESC_BATTFIX"] =			"Allows Download and Install PSP2-batteryFixer vpk in your Vita (Fixes most of PSVita's battery-related problems)"
 ITALIAN["MENU_EXTRAS_TRANSLATE_DESC"] =					"Aiuta a migliorare Autoplugin traducendo nella tua lingua!"
 
 --Options Settings
@@ -175,6 +181,10 @@ ITALIAN["CUSTOMBOOTSPLASH_IMPORT"] =					"Importa un'immagine dalla Galleria (so
 ITALIAN["CUSTOMBOOTSPLASH_NOPNG_FOUND"] =				"ux0:CustomBootsplash VUOTO! "
 ITALIAN["CUSTOMBOOTSPLASH_NOPNG"] =						"Formato Compatibile PNG"
 
+--TransImpose
+ITALIAN["TRANSIMPOSE_OSK_TITLE"] =						"Level for TransparentImpose"
+ITALIAN["TRANSIMPOSE_LEVEL"] =							"Level Set"
+
 --Translate
 ITALIAN["TRANSLATE_ENGLISH_TITLE"] =					"Inglese: "
 ITALIAN["TRANSLATE_CURRENT_TITLE"] =					"Attuale: "
@@ -227,7 +237,7 @@ ITALIAN["TURKISH"] =									"TURCO"
 
 --descriptions plugins
 --StorageMgr
-ITALIAN["INSTALLP_DESC_SD2VITA"] =						"Install Plugin for SD2VITA"
+ITALIAN["INSTALLP_DESC_SD2VITA"] =						"Kernel plugin that automatically mounts/redirects any storage device to any mount points you want (SD2VITA)"
 
 --KERNEL
 ITALIAN["INSTALLP_DESC_NONPDRM"] =						"Permette di bypassare la protezione DRM su qualsiasi contenuto PS Vita"
@@ -238,7 +248,7 @@ ITALIAN["INSTALLP_DESC_VITABRIGHT"] =					"Plugin che consente di utilizzare una
 ITALIAN["INSTALLP_DESC_NOAVLS"] =						"Plugin che disabiliterà permanentemente AVLS su PSVITA"
 ITALIAN["INSTALLP_DESC_REPATCH"] =						"Consente il modding dei giochi crittografati (simile a ux0:patch) e consente di patchare un gioco per bypassare il requisito minimo del firmware"
 ITALIAN["INSTALLP_DESC_REPATCH271"] =					"Versione precedente di rePATCH che risolve alcuni problemi con la versione 3.0"
-ITALIAN["INSTALLP_DESC_LOLICON"] =						"Plugin che consente l'overclocking della PSVITA a 500 MHz (Prestare molta attenzione)"
+ITALIAN["INSTALLP_DESC_LOLICON"] =						"Plugin che consente l'overclocking della PSVITA a 500 MHz (Prestare molta attenzione) (SELECT + UP enable menu. SELECT + DOWN close menu)"
 ITALIAN["INSTALLP_DESC_DS3VITA"] =						"Controlla la tua PSVita utilizzando un DualShock 3"
 ITALIAN["INSTALLP_DESC_DS4VITA"] =						"Controlla la tua PSVita utilizzando un DualShock 4"
 ITALIAN["INSTALLP_DESC_UDCDUVC"] =						"Consente di trasmettere in streaming la schermata della tua PSVita sul tuo PC"
@@ -252,8 +262,8 @@ ITALIAN["INSTALLP_DESC_DSMOTION"] = 					"Supporto DualShock motion control per 
 ITALIAN["INSTALLP_DESC_USBMC"] = 						"Trasforma la memoria USB come scheda di memoria PSVita"
 ITALIAN["INSTALLP_DESC_ANALOGSENHANCER"] =				"Questo piccolo plugin del kernel consente agli utenti di migliorare la propria esperienza con gli analogici PSVITA"
 ITALIAN["INSTALLP_DESC_IOPLUS"] = 						"Un plugin per il kernel PSVita che consente più operazioni IO in userland"
-ITALIAN["INSTALLP_DESC_VITACHEAT"] =					"Plugin per utilizzare Cheats nei giochi PSVita"
-ITALIAN["INSTALLP_DESC_VITACHEAT2"] =					"Usa i cheat sui giochi PSVita solo per firmware 3.60"
+ITALIAN["INSTALLP_DESC_VITACHEAT"] =					"Plugin per utilizzare Cheats nei giochi PSVita (L + RIGHT)"
+ITALIAN["INSTALLP_DESC_VITACHEAT2"] =					"Usa i cheat sui giochi PSVita solo per firmware 3.60 (L + RIGHT)"
 ITALIAN["INSTALLP_DESC_ANALOGSTICK"] =					"Plugin per disattivare completamente la levetta analogica della PSVita"
 ITALIAN["INSTALLP_DESC_ANALOGSTICK1"] =					"Assegna la levetta sinistra della PSVita come levetta destra"
 ITALIAN["INSTALLP_DESC_ANALOGSTICK2"] =					"Assegna la levetta destra della PSVita come levetta sinistra"
@@ -270,7 +280,7 @@ ITALIAN["INSTALLP_DESC_NOPOWERL"] =						"A PSVita kernel plugin that removes so
 ITALIAN["INSTALLP_DESC_DERIN"] =					    "Vita clocks OSD display."
 ITALIAN["INSTALLP_DESC_LOLITA"] =						"Sets your Vita's clocks to maximum all the time and disables limitations like low brightness and no Wi-Fi on intensive games."
 ITALIAN["INSTALLP_DESC_LOLITA4"] =						"Sets your Vita's clocks to 444 mhz all the time and disables limitations like low brightness and no Wi-Fi on intensive games."
-ITALIAN["INSTALLP_DESC_PSVSHELL"] =						"Yet another overclocking plugin"
+ITALIAN["INSTALLP_DESC_PSVSHELL"] =						"Yet another overclocking plugin (SELECT + UP or SELECT + DOWN to toggle between 3 GUI modes)"
 ITALIAN["INSTALLP_DESC_SYSCALL6"] =						"A tool that patches Playstation Vita's lv0's secure_kernel's syscall 6 (SELF/RVK checks)"
 ITALIAN["INSTALLP_DESC_MONAURAL"] =						"Mono audio and channel balance for Playstation Vita (requires MonauralConfig.vpk)"
 ITALIAN["INSTALLP_DESC_MUPREMIUM"] =					"Enable background music play for any game or application."
@@ -289,9 +299,9 @@ ITALIAN["INSTALLP_DESC_NOTROPHYMSG"] =					"Disabilita il messaggio dei suggerim
 ITALIAN["INSTALLP_DESC_CUSTOMWARNING"] =				"Allows you to set a custom warning message instead of the epilepsy warning when you bootup with ENSO"
 ITALIAN["INSTALLP_DESC_SHELLBAT"] =						"Abilita la percentuale della batteria nella barra di stato"
 ITALIAN["INSTALLP_DESC_SHELLBATM"] =					"Battery percent and IP address in statusbar"
-ITALIAN["INSTALLP_DESC_SHELLSECBAT"] =					"Abilita la percentuale della batteria nella barra di stato: fusione ShellBat e LastSeconds"
+ITALIAN["INSTALLP_DESC_SHELLSECBAT"] =					"Abilita la percentuale della batteria nella barra di stato: fusione ShellBat e LastSeconds (SELECT + L or SELECT + R visualize your drive state)"
 ITALIAN["INSTALLP_DESC_PNGSHOT"] =						"pngshot è un plugin per effettuare fantastici screenshot senza filigrana (.PNG)"
-ITALIAN["INSTALLP_DESC_VFLUX"] =						"Plugin per il filtro dello schermo su PS Vita"
+ITALIAN["INSTALLP_DESC_VFLUX"] =						"Plugin per il filtro dello schermo su PS Vita (L + SELECT in your game)"
 ITALIAN["INSTALLP_DESC_RESKYPE"] =						"Un semplice plugin per abilitare l'app di Skype su 3,65+"
 ITALIAN["INSTALLP_DESC_AUTOBOOT"] =						"Questo plugin avvia automaticamente un'applicazione subito dopo che si avvia Enso come AutoStart usava fare su PSP"
 ITALIAN["INSTALLP_DESC_VITACOMPA"] =					"Plugin to ease the development of homebrews and plugins on the PS Vita"
@@ -305,26 +315,29 @@ ITALIAN["INSTALLP_DESC_NOSHAREDFB"] =					"Allows to bypass shared framebuffer i
 ITALIAN["INSTALLP_DESC_TRIMPOSE"] =						"Plugin for PS Vita that makes impose menu (the one that appears after long PS button press) transparent."
 
 --ALL
-ITALIAN["INSTALLP_DESC_VSHMENU"] =						"Un plugin per taiHEN con VSH menu per i giochi PSVITA e gli homebrew"
+ITALIAN["INSTALLP_DESC_YAMT"] =							"Yet another (re)mount tool kernel plugin for PSVita/PSTV (Requires Enso, compatible ONLY with firmware 3.60 and 3.65"
+ITALIAN["INSTALLP_DESC_ITLSENSO"] =						"Adds TLS v1.2 to Enso enabled devices"
+ITALIAN["INSTALLP_DESC_KUIO"] =							"Kuio is a lightweight kernel module for TaiHen that allows user modules to access ux0:data for basic I/O operations"
+ITALIAN["INSTALLP_DESC_VSHMENU"] =						"Un plugin per taiHEN con VSH menu per i giochi PSVITA e gli homebrew (L+R+START or L+R+SELECT Open VSH menu)"
 ITALIAN["INSTALLP_DESC_VITAGRAFIX"] =					"Plugin che consente di modificare la risoluzione e il cap FPS dei giochi PS Vita"
-ITALIAN["INSTALLP_DESC_OVERCLOCK"] =					"Plugin per Overclock CPU/GPU per Taihen"
+ITALIAN["INSTALLP_DESC_OVERCLOCK"] =					"Plugin per Overclock CPU/GPU per Taihen (SELECT + UP enable menu. SELECT + DOWN close menu)"
 ITALIAN["INSTALLP_DESC_FRAMECOUNTER"] =					"Si tratta di un piccolo plugin che funziona come un contatore FPS. Sul lato superiore sinistro della schermata mostrerà un contatore FPS."
-ITALIAN["INSTALLP_DESC_VGI"] =							"Un semplice plugin per taihen che consente di visualizzare informazioni utili sui giochi PS Vita."
+ITALIAN["INSTALLP_DESC_VGI"] =							"Un semplice plugin per taihen che consente di visualizzare informazioni utili sui giochi PS Vita. (SELECT + L Open/Close VGi menu in your game)"
 ITALIAN["INSTALLP_DESC_FUCKPSSE"] =						"Un plugin per decriptare giochi PSM"
 ITALIAN["INSTALLP_DESC_PSMPATCH"] =						"Consente di modificare i giochi del PSM e può essere utilizzato anche per caricare Homebrew PSM."
-ITALIAN["INSTALLP_DESC_TROPHAX"] =						"Sbloccatore universale dei trofei per PSVITA."
-ITALIAN["INSTALLP_DESC_TURBOPAD"] =						"Questo plugin ti permette di abilitare il RapidFire su qualunque pulsante tu desideri"
-ITALIAN["INSTALLP_DESC_RESCALER"] =					    "Questo plugin sostituisce l'originale rescaler per PSVITA con uno nuovo, permettendo ai giochi in esecuzione una risoluzione non nativa per ottenere miglioramenti grafici grazie al filtraggio degli shader."
+ITALIAN["INSTALLP_DESC_TROPHAX"] =						"Sbloccatore universale dei trofei per PSVITA. (in game START + SELECT enable plugin, L+R unlock all or L+START unlock a specific trophy, L+UP or L+DOWN to make your selection then L+CIRCLE to unlock)"
+ITALIAN["INSTALLP_DESC_TURBOPAD"] =						"Questo plugin ti permette di abilitare il RapidFire su qualunque pulsante tu desideri (START + TRIANGLE Open config menu)"
+ITALIAN["INSTALLP_DESC_RESCALER"] =					    "Questo plugin sostituisce l'originale rescaler per PSVITA con uno nuovo, permettendo ai giochi in esecuzione una risoluzione non nativa per ottenere miglioramenti grafici grazie al filtraggio degli shader. (Hold START 2secs Locks/Unlocks mode/bilinear mode changing, Hold L 4secs Changes current rescaling mode, Hold R 4secs Enables/Disables bilinear filtering)"
 ITALIAN["INSTALLP_DESC_INFINITENET"] =			    	"taiHEN plugin that prevents games from disabling net features"
 ITALIAN["INSTALLP_DESC_FREEPSM"] =			        	"Enables Debug PSM InAppPurchases in retail PSM Runtime"
 ITALIAN["INSTALLP_DESC_MAKEPSM"] =						"Modifica le applicazioni per sviluppatore PSM"
 ITALIAN["INSTALLP_DESC_WDNR"] =					    	"Rear touchpad disabler for PSVITA."
 ITALIAN["INSTALLP_DESC_WDNF"] =					    	"Disable front touchscreen."
-ITALIAN["INSTALLP_DESC_REMAPSV"] =						"remaPSV is a remap plugin allowing you to remap every single button of your PSVita and to map touch and reartouch zones to extra buttons."
+ITALIAN["INSTALLP_DESC_REMAPSV"] =						"remaPSV is a remap plugin allowing you to remap every single button of your PSVita and to map touch and reartouch zones to extra buttons (START + SQUARE)"
 ITALIAN["INSTALLP_DESC_FORCELANG"] =					"A taiHEN plugin for overriding an application's language"
 ITALIAN["INSTALLP_DESC_SHOWINFO"] =						"Simple plugin that shows title_id, stitle and app_ver of the running application."
 ITALIAN["INSTALLP_DESC_SHOWINFOFU"] =					"Simple plugin that shows title_id, stitle and app_ver of the running application.(full version)"
-ITALIAN["INSTALLP_DESC_MODALVOL"] =				    	"This pack consits of applications to control system audio volume on PS vita in real time without closing games (Require VolumeControl.vpk)"
+ITALIAN["INSTALLP_DESC_MODALVOL"] =				    	"This pack consits of applications to control system audio volume on PS vita in real time without closing games SELECT+RIGHT (Require VolumeControl.vpk)"
 
 --*NPXS10013
 ITALIAN["INSTALLP_DESC_PS4LINK"] =			        	"taiHEN plugin that allows to force preferred Remote Play button configuration"
