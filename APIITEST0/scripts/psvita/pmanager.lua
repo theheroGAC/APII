@@ -15,8 +15,11 @@ function pluginsmanager()
 
 	update_translations(plugins, tb_cop)
 
-	table.insert(tb_cop, { name = "Kuio by Rinnegatamante", path = "kuio.skprx", section = "KERNEL"})
+	table.insert(tb_cop, { name = "Kuio by Rinnegatamante", path = "kuio.skprx", section = "KERNEL", desc = LANGUAGE["INSTALLP_DESC_KUIO"] } )
 	table.insert(tb_cop, { name = "MiniVitaTV by TheOfficialFloW vbeta0.2", path = "minivitatv.skprx", section = "KERNEL",  path2 = "ds3.skprx", section2 = "KERNEL" })
+	table.insert(tb_cop, { name = "iTLS-Enso by SKGleba", path = "itls.skprx", section = "KERNEL", desc = LANGUAGE["INSTALLP_DESC_ITLSENSO"] })
+	table.insert(tb_cop, { name = "Yamt-Vita by SKGleba", path = "yamt.suprx", section = "*NPXS100015", desc = LANGUAGE["INSTALLP_DESC_YAMT"] })
+	table.insert(tb_cop, { name = "StorageMgr CelesteBlue", path = "storagemgr.skprx", section = "KERNEL", desc = LANGUAGE["INSTALLP_DESC_SD2VITA"] })
 
 	--Init load configs
 	tai.load()
@@ -53,9 +56,9 @@ function pluginsmanager()
 
 	for i=1,#section do
 		for j=1,#tai[partition].gameid[ section[i] ].prx do
-			for k=1,#plugins do
-				if files.nopath(tai[partition].gameid[ section[i] ].prx[j].path:lower()) == plugins[k].path:lower() then
-					tai[partition].gameid[ section[i] ].prx[j].desc = plugins[k].desc
+			for k=1,#tb_cop do
+				if files.nopath(tai[partition].gameid[ section[i] ].prx[j].path:lower()) == tb_cop[k].path:lower() then
+					tai[partition].gameid[ section[i] ].prx[j].desc = tb_cop[k].desc
 				end
 			end
 		end
@@ -168,6 +171,8 @@ function pluginsmanager()
 		end
 
 		if scrollp.maxim > 0 then
+			if buttons.left or buttons.right then xscr1 = 10 end
+
 			if buttons.up or buttons.analogly < -60 then
 				if scrollp:up() then xscr1 = 10 end
 			end
@@ -209,7 +214,7 @@ function pluginsmanager()
 											table.remove(cont,i)
 										end
 									end
-									local file = io.open("ur0:tai/boot_config_backup.txt", "w+")
+									local file = io.open("ur0:tai/boot_config.txt", "w+")
 									for s,t in pairs(cont) do
 										file:write(string.format('%s\n', tostring(t)))
 									end
@@ -255,6 +260,17 @@ function pluginsmanager()
 						--else
 						--	scrollp = newScroll( {}, limtpm)
 						end
+						
+						for i=1,#section do
+							for j=1,#tai[partition].gameid[ section[i] ].prx do
+								for k=1,#tb_cop do
+									if files.nopath(tai[partition].gameid[ section[i] ].prx[j].path:lower()) == tb_cop[k].path:lower() then
+										tai[partition].gameid[ section[i] ].prx[j].desc = tb_cop[k].desc
+									end
+								end
+							end
+						end
+
 						change = true
 						buttons.homepopup(0)
 					end

@@ -53,7 +53,6 @@ function update_database2(database,tb)
 	file:close()
 	dofile("plugins/plugins.lua")--Official
 	if #plugins > 0 then table.sort(plugins, function (a,b) return string.lower(a.name)<string.lower(b.name) end) end
-
 end
 
 function plugins_online2()
@@ -62,13 +61,13 @@ function plugins_online2()
 		message_wait()
 	os.delay(500)
 
-local onNetGetFileOld = onNetGetFile
-onNetGetFile = nil
+	local onNetGetFileOld = onNetGetFile
+	onNetGetFile = nil
 	__file = "Langdatabase.lua"
 	if http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/Translations/Langdatabase.lua", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua") then
 		dofile("ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua")
 	else
-		os.message(LANGUAGE["LANG_ONLINE_FAILDB"])
+		os.message(LANGUAGE["LANG_ONLINE_FAILDB"].."\n\n"..LANGUAGE["UPDATE_WIFI_IS_ON"])
 		return
 	end
 
@@ -139,13 +138,13 @@ onNetGetFile = nil
 
 	local tmpss = {}
 
-onNetGetFile = onNetGetFileOld
+	onNetGetFile = onNetGetFileOld
 
 	__file = "Database Plugins"
 	if http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/plugins/plugins.lua", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/plugins/plugins.lua") then
 		dofile("ux0:data/AUTOPLUGIN2/plugins/plugins.lua")
 	else
-		os.message(LANGUAGE["LANG_ONLINE_FAILDB"])
+		os.message(LANGUAGE["LANG_ONLINE_FAILDB"].."\n\n"..LANGUAGE["UPDATE_WIFI_IS_ON"])
 		return
 	end
 
@@ -168,6 +167,8 @@ onNetGetFile = onNetGetFileOld
 						--if os.message("Update bajar si o no ?\n"..Online_Plugins[j].name,1) == 1 then
 						--Lo mejor es poner ruta a project/resources/plugins
 						if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/resources/plugins/%s", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Plugins[j].path), path_plugins)) then
+
+							cont_global -= 1
 
 							if Online_Plugins[j].path2 then
 								http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/resources/plugins/%s", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Plugins[j].path2), path_plugins)
@@ -215,6 +216,8 @@ onNetGetFile = onNetGetFileOld
 			__file = Online_Plugins[i].name
 
 			if (http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/resources/plugins/%s", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Plugins[i].path), path_plugins)) then
+
+				cont_global -= 1
 
 				if Online_Plugins[i].path2 then
 					http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/%s/resources/plugins/%s", APP_REPO, APP_PROJECT, APP_FOLDER, Online_Plugins[i].path2), path_plugins)

@@ -49,12 +49,15 @@ function plugins_installation(sel)
 			elseif plugins[sel].path == "vitastick.skprx" and not game.exists("VITASTICK") then
 				__file = "vitastick.vpk"
 				game.install("resources/plugins/vitastick.vpk",false)
+				files.delete("ux0:data/AUTOPLUGIN2/vpks/")
 			elseif plugins[sel].path == "ModalVol.suprx" and not game.exists("MODALVOLM") then
 				__file = "VolumeControl.vpk"
 				game.install("resources/plugins/VolumeControl.vpk",false)
+				files.delete("ux0:data/AUTOPLUGIN2/vpks/")
 			elseif plugins[sel].path == "monaural.skprx" and not game.exists("AKRK00003") then
 				__file = "MonauralConfig.vpk"
 				game.install("resources/plugins/MonauralConfig.vpk",false)
+				files.delete("ux0:data/AUTOPLUGIN2/vpks/")
 			elseif plugins[sel].path == "VitaGrafix.suprx" and not game.exists("VGCF00001") then
 				files.delete("tmp")
 				if back2 then back2:blit(0,0) end
@@ -79,8 +82,10 @@ function plugins_installation(sel)
 										onNetGetFile = onNetGetFileOld
 										__file = "VitaGrafixConfigurator.vpk"
 										http.download("https://github.com"..links[i].href,"ux0:data/AUTOPLUGIN2/VitaGrafixConfigurator.vpk")
+										http.getfile("https://raw.githubusercontent.com/Electry/VitaGrafixPatchlist/master/patchlist.txt", "ux0:data/VitaGrafix/patch/patchlist.txt")
 										if files.exists("ux0:data/AUTOPLUGIN2/VitaGrafixConfigurator.vpk") then
 											game.install("ux0:data/AUTOPLUGIN2/VitaGrafixConfigurator.vpk",false)
+											files.delete("ux0:data/AUTOPLUGIN2/vpks/")
 											break
 										end
 									end
@@ -150,7 +155,6 @@ function plugins_installation(sel)
 				
 				local plugin_name = plugins[sel].name
 
-				
 				if plugins[sel].path:find("udcd_uvc_",1,true) then
 					--os.message("offs")
 					if hw.model() == "Vita Fat" then
@@ -186,14 +190,18 @@ function plugins_installation(sel)
 								tai.del(loc, "KERNEL", "udcd_uvc.skprx")
 							end
 						else
+							if (plugins[sel].path == "vitacheat.skprx") then --3.65
+								tai.del(loc, "KERNEL", "vitacheat360.skprx")
+							elseif (plugins[sel].path == "vitacheat360.skprx") then
+								tai.del(loc, "KERNEL", "vitacheat.skprx")
+							end
 							--os.message("2")
 							tai.put(loc, plugins[sel].section,  pathline_in_config)
 						end
 
 					end
 				end
-				
-				--tai.put(loc, plugins[sel].section,  pathline_in_config)
+
 				--Write
 				tai.sync(loc)
 
@@ -202,8 +210,16 @@ function plugins_installation(sel)
 				elseif plugins[sel].path == "custom_boot_splash.skprx" and not files.exists("ur0:tai/boot_splash.bin") then--Custom Boot Splash
 					local henkaku = image.load("imgs/boot_splash.png")
 					if henkaku then img2splashbin(henkaku,false) end
-				elseif plugins[sel].path == "vitacheat.skprx" or plugins[sel].path == "vitacheat360.skprx" then--Vitacheat
-					if not files.exists("ux0:vitacheat/db/") then files.extract("resources/plugins/vitacheat.zip","ux0:") end
+
+				elseif plugins[sel].path == "vitacheat.skprx" then		--Vitacheat 3.65
+					files.extract("resources/plugins/vitacheat.zip","ux0:")
+					files.copy("resources/plugins/vitacheat365/vitacheat.suprx","ux0:vitacheat/")
+
+				elseif plugins[sel].path == "vitacheat360.skprx" then	--Vitacheat 3.60
+
+					files.extract("resources/plugins/vitacheat.zip","ux0:")
+					files.copy("resources/plugins/vitacheat360/vitacheat.suprx","ux0:vitacheat/")
+
 				elseif plugins[sel].path == "AutoBoot.suprx" and not files.exists("ux0:data/AutoBoot/") then--AutoBoot
 					files.extract("resources/plugins/AutoBoot.zip","ux0:")
 			    elseif plugins[sel].path == "ps4linkcontrols.suprx" and not files.exists("ux0:ps4linkcontrols.txt") then--ps4linkcontrols
@@ -213,10 +229,7 @@ function plugins_installation(sel)
 				if back2 then back2:blit(0,0) end
 					message_wait(plugin_name.."\n\n"..LANGUAGE["STRING_INSTALLED"])
 				os.delay(1500)
-
 				change = true
-				buttons.homepopup(0)
-
 			end
 
 		else
@@ -237,7 +250,7 @@ function autoplugin()
 	end
 	path_tai = locations[loc].."tai/"
 
-	local limit = 10
+	local limit = 9
 	local scr = newScroll(plugins,limit)
 	local xscr1,toinstall = 10,0
 	scr.ini,scr.lim,scr.sel = 1,limit,1
@@ -263,7 +276,7 @@ function autoplugin()
 		local y = 64
 		for i=scr.ini,scr.lim do
 
-			if i == scr.sel then draw.offsetgradrect(3,y-5,944,27,color.shine:a(75),color.shine:a(135),0x0,0x0,21) end
+			if i == scr.sel then draw.offsetgradrect(3,y-9,944,31,color.shine:a(75),color.shine:a(135),0x0,0x0,21) end
 
 			idx = tai.find(partition,plugins[i].section,plugins[i].path)
 			if idx != nil then
@@ -275,21 +288,21 @@ function autoplugin()
 			end
 
 			if plugins[i].path2 == "kuio.skprx" or plugins[i].path2 == "ioplus.skprx" then
-				screen.print(40,y, plugins[i].name, 1.0,color.white,color.blue,__ALEFT)
+				screen.print(40,y, plugins[i].name, 1.2,color.white,color.blue:a(125),__ALEFT)
 				screen.print(895,y, " ("..plugins[i].path2.." )", 1.0,color.yellow,color.blue,__ARIGHT)
 			else
-				screen.print(40,y, plugins[i].name, 1.0,color.white,color.blue,__ALEFT)
+				screen.print(40,y, plugins[i].name, 1.2,color.white,color.blue:a(125),__ALEFT)
 			end
 
 			if plugins[i].inst then
 				screen.print(5,y," >> ",1,color.white,color.green)
 			end
 
-			y+=32
+			y+=36
 		end
 
 		---- Draw Scroll Bar
-		local ybar,hbar = 60, (limit*32)
+		local ybar,hbar = 60, (limit*36)
 		draw.fillrect(950,ybar-2,8,hbar,color.shine)
 		--if scr.maxim >= limit then
 			local pos_height = math.max(hbar/scr.maxim, limit)
@@ -350,6 +363,7 @@ function autoplugin()
 		end
 
 		if scr.maxim > 0 then
+			if buttons.left or buttons.right then xscr1 = 10 end
 
 			if buttons.up or buttons.analogly < -60 then
 				if scr:up() then xscr1 = 10 end
@@ -366,7 +380,7 @@ function autoplugin()
 
 			--Install selected plugins
 			if buttons.accept then
-
+				buttons.homepopup(0)
 				if back2 then back2:blit(0,0) end
 					message_wait()
 				os.delay(1000)
@@ -386,7 +400,7 @@ function autoplugin()
 					plugins[i].inst = false
 					toinstall = 0
 				end
-
+				buttons.homepopup(1)
 			end
 
 			--Mark/Unmark

@@ -181,9 +181,7 @@ function npdrm_free()
 				if scroll:down() then xscroll = 10 end
 			end	
 
-			if buttons.left or buttons.right then
-				xscroll = 10
-			end
+			if buttons.left or buttons.right then xscroll = 10 end
 
 			--install plugin
 			if buttons.accept then

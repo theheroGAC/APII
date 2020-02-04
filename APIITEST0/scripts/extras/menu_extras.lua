@@ -13,6 +13,51 @@
 dofile("scripts/extras/pkgj.lua")
 dofile("scripts/extras/customsplash.lua")
 dofile("scripts/extras/translate.lua")
+files.mkdir("ux0:data/AUTOPLUGIN2/vpks/")
+
+function download_install(url,name)
+	if back2 then back2:blit(0,0) end
+		message_wait()
+	os.delay(250)
+	files.delete("tmp")
+	local onNetGetFileOld = onNetGetFile
+	onNetGetFile = nil
+	http.download(url,"tmp")
+	onNetGetFile = onNetGetFileOld
+
+	if files.exists("tmp") then
+		local objh = html.parsefile("tmp")
+		if objh then
+
+			local links = objh:findall(html.TAG_A)
+			if links then
+				--os.message("Links "..#links)
+				for i=1,#links do
+					if links[i].href then
+						if links[i].href:find(name,1,true) then
+							--os.message(links[i].href)
+							onNetGetFile = onNetGetFileOld
+							__file = files.nopath(files.nofile(links[i].href))..name
+							string.gsub(__file,"/","  ")
+							http.download("https://github.com"..links[i].href,"ux0:data/AUTOPLUGIN2/vpks/"..name)
+							if files.exists("ux0:data/AUTOPLUGIN2/vpks/"..name) then
+								game.install("ux0:data/AUTOPLUGIN2/vpks/"..name,false)
+								break
+							end
+						end
+					end
+				end
+			else
+				os.message(LANGUAGE["LANG_ONLINE_FAIL_CONEXION"])
+			end
+		else
+			os.message(LANGUAGE["UPDATE_WIFI_IS_ON"])
+		end
+	else
+		os.message(LANGUAGE["UPDATE_WIFI_IS_ON"])
+	end
+	__file = ""
+end
 
 function menu_extras()
 
@@ -29,7 +74,6 @@ function menu_extras()
 	end
 
 	local customwarning_callback = function ()
-
 		local pathCW = "ur0:tai/"
 		if files.exists("ux0:tai/custom_warning.txt") then pathCW = "ux0:tai/" end
 
@@ -53,8 +97,42 @@ function menu_extras()
 		end
 	end
 
-	local translate_callback = function ()
-		translate()
+	--local translate_callback = function ()
+	--	translate()
+	--end
+	
+	local customTransImpose_callback = function ()
+		local text = osk.init(LANGUAGE["TRANSIMPOSE_OSK_TITLE"], 125, 3, __OSK_TYPE_NUMBER, __OSK_MODE_TEXT)
+		if not text then return end
+
+		local fp = io.open("ur0:data/trimpose.txt", "wb")
+		if fp then
+			fp:write(tonumber(text))
+			fp:close()
+
+			if back then back:blit(0,0) end
+				message_wait(LANGUAGE["TRANSIMPOSE_LEVEL"])
+			os.delay(1500)
+
+			if os.message(LANGUAGE["RESTART_QUESTION"],1) == 1 then
+				if back then back:blit(0,0) end
+					message_wait(LANGUAGE["STRING_PSVITA_RESTART"])
+				os.delay(1500)
+				buttons.homepopup(1)
+				power.restart()
+			end
+
+		end
+	end
+
+	local itls_callback = function ()
+		download_install("https://github.com/SKGleba/iTLS-Enso/releases/latest/", "iTLS-Enso.vpk")
+		files.delete("ux0:data/AUTOPLUGIN2/vpks/")
+	end
+
+	local batteryfixer_callback = function ()
+		download_install("https://github.com/SKGleba/PSP2-batteryFixer/releases/latest/", "batteryFixer.vpk")
+		files.delete("ux0:data/AUTOPLUGIN2/vpks/")
 	end
 
 	--Init load configs
@@ -62,7 +140,9 @@ function menu_extras()
 	tai.load()
 	if tai[__UR0].exist then loc = 2 end
 	local menu = {
-		{ text = LANGUAGE["MENU_EXTRAS_PKGJ_TITLE"],	desc = LANGUAGE["MENU_EXTRAS_CUSTOM_PKG_CONFIG_DESC"],	funct = config_callback },
+		{ text = LANGUAGE["MENU_EXTRAS_PKGJ_TITLE"],		desc = LANGUAGE["MENU_EXTRAS_CUSTOM_PKG_CONFIG_DESC"],	funct = config_callback },
+		{ text = LANGUAGE["MENU_EXTRAS_INSTALL_ITLSENSO"],	desc = LANGUAGE["MENU_EXTRAS_INSTALL_ITLSENSO_DESC"],	funct = itls_callback },
+		{ text = LANGUAGE["MENU_EXTRAS_INSTALL_BATTFIX"],	desc = LANGUAGE["MENU_EXTRAS_INSTALL_DESC_BATTFIX"],	funct = batteryfixer_callback },
 	}
 
 	local idx = tai.find(loc, "KERNEL", "custom_boot_splash.skprx")
@@ -75,8 +155,12 @@ function menu_extras()
 		table.insert(menu, { text = LANGUAGE["MENU_EXTRAS_CUSTOM_WARNING"],	desc = LANGUAGE["MENU_EXTRAS_CUSTOMWARNING_DESC"],	funct = customwarning_callback } )
 	end
 
-	table.insert(menu, { text = LANGUAGE["MENU_EXTRAS_TRANSLATE"],	desc = LANGUAGE["MENU_EXTRAS_TRANSLATE_DESC"],	funct = translate_callback} )
+	idx = tai.find(loc, "main", "TrImpose.suprx")
+	if idx then
+		table.insert(menu, { text = LANGUAGE["MENU_EXTRAS_TRANSP_IMPOSE"],	desc = LANGUAGE["MENU_EXTRAS_TRANSPIMPOSE_DESC"],	funct = customTransImpose_callback } )
+	end
 
+	--table.insert(menu, { text = LANGUAGE["MENU_EXTRAS_TRANSLATE"],	desc = LANGUAGE["MENU_EXTRAS_TRANSLATE_DESC"],	funct = translate_callback} )
 
 	local scroll = newScroll(menu,#menu)
 
@@ -106,6 +190,8 @@ function menu_extras()
         screen.flip()
 
         --Controls
+		if buttons.left or buttons.right then xscroll = 10 end
+
         if buttons.up or buttons.analogly < -60 then
 			if scroll:up() then xscroll = 10 end
 		end

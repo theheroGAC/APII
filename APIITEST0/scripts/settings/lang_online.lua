@@ -39,7 +39,7 @@ function lang_online()
 	if http.getfile(string.format("https://raw.githubusercontent.com/%s/%s/master/Translations/Langdatabase.lua", APP_REPO, APP_PROJECT), "ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua") then
 		dofile("ux0:data/AUTOPLUGIN2/lang/Langdatabase.lua")
 	else
-		os.message(LANGUAGE["LANG_ONLINE_FAILDB"])
+		os.message(LANGUAGE["LANG_ONLINE_FAILDB"].."\n\n"..LANGUAGE["UPDATE_WIFI_IS_ON"])
 		return
 	end
 

@@ -9,6 +9,11 @@
 	Collaborators: BaltazaR4 & Wzjk.
 ]]
 
+PLUGINS_PORT = channel.new("PLUGINS_PORT")
+cont_global = atomic.new(0)
+PLUGINS_PORT:push(cont_global)
+THIDS = thread.new("scripts/thread/thread_plugins.lua")
+
 --Activamos Paleta de Colores Precargados
 color.loadpalette()
 
@@ -27,7 +32,6 @@ back2 = image.load("imgs/back2.png")
 buttonskey = image.load("imgs/buttons.png",20,20)
 buttonskey2 = image.load("imgs/buttons2.png",20,20)
 buttonskey3 = image.load("imgs/buttons3.png",35,25)
-
 dotg = image.load("imgs/dot_green.png")
 doty = image.load("imgs/dot_yellow.png")
 
@@ -42,7 +46,6 @@ if os.access() == 0 then
 	os.exit()
 end
 
---dofile("scripts/tai.lua")
 dofile("scripts/commons.lua")
 dofile("scripts/scroll.lua")
 

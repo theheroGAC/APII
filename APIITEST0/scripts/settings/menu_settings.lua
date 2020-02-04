@@ -76,6 +76,8 @@ function menu_settings()
 		screen.flip()
 
 		--Controls
+		if buttons.left or buttons.right then xscroll = 10 end
+
 		if buttons.up or buttons.analogly < -60 then
 			if scroll:up() then xscroll = 10 end
 		end

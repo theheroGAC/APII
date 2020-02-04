@@ -136,7 +136,7 @@ function install()
 		buttons.homepopup(0)
 
 		if back2 then back2:blit(0, 0) end
-		message_wait(LANGUAGE["INSTALLP_DESC_SD2VITA"] .. "\n\n" .. LANGUAGE["STRING_INSTALLED"])
+		message_wait(LANGUAGE["MENU_PSVITA_INSTALL_SD2VITA"] .. "\n\n" .. LANGUAGE["STRING_INSTALLED"])
 		os.delay(2000)
 
 		configure()

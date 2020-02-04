@@ -9,13 +9,12 @@
 	Collaborators: BaltazaR4 & Wzjk.
 ]]
 
---Funciones PSVITA
-dofile("scripts/psvita/sd2vita.lua")
-
 --Plugins!!!
 dofile("plugins/plugins.lua")
 if #plugins > 0 then table.sort(plugins, function (a,b) return string.lower(a.name)<string.lower(b.name) end) end
 
+--Funciones PSVITA
+dofile("scripts/psvita/sd2vita.lua")
 dofile("scripts/psvita/pmanager.lua")
 dofile("scripts/psvita/autoplugin.lua")
 dofile("scripts/psvita/plugins_online.lua")
@@ -40,17 +39,22 @@ function menu_ps()
 
 	if tai[__UR0].exist then
 		if tai.find(__UR0, "KERNEL", "storagemgr.skprx") then
-			LANGUAGE["MENU_PSVITA_INSTALL_SD2VITA"] = LANGUAGE["MENU_PSVITA_CONFIGURE_SD2VITA"]
-			LANGUAGE["MENU_PSVITA_INSTALL_SD2VITA_DESC"] = LANGUAGE["MENU_PSVITA_CONFIG_SD2VITA_DESC"]
+			LANGUAGE["MENU_PSVITA_INSTALL_SD2VITA"] 		= LANGUAGE["MENU_PSVITA_CONFIGURE_SD2VITA"]
+			LANGUAGE["MENU_PSVITA_INSTALL_SD2VITA_DESC"] 	= LANGUAGE["MENU_PSVITA_CONFIG_SD2VITA_DESC"]
 		end
 	end
 
 	local menu = {
-		{ text = LANGUAGE["MENU_PSVITA_INSTALL_PLUGINS"],		desc = LANGUAGE["MENU_PSVITA_INSTALL_PLUGINS_DESC"],		funct = installp_callback },
-		{ text = LANGUAGE["MENU_PSVITA_UNINSTALL_PLUGINS"],		desc = LANGUAGE["MENU_PSVITA_UNINSTALL_PLUGINS_DESC"],		funct = uinstallp_callback },
-		{ text = LANGUAGE["MENU_PSVITA_INSTALL_SD2VITA"],		desc = LANGUAGE["MENU_PSVITA_INSTALL_SD2VITA_DESC"],		funct = sd2vita_callback },
-		{ text = LANGUAGE["MENU_PSVITA_CHECK_ONLINE_PLUGINS"],	desc = LANGUAGE["MENU_PSVITA_CHECK_ONLINE_PLUGINS_DESC"],	funct = onlineplugins_callback },
+		{ text = LANGUAGE["MENU_PSVITA_INSTALL_PLUGINS"],	desc = LANGUAGE["MENU_PSVITA_INSTALL_PLUGINS_DESC"],	funct = installp_callback },
+		{ text = LANGUAGE["MENU_PSVITA_UNINSTALL_PLUGINS"],	desc = LANGUAGE["MENU_PSVITA_UNINSTALL_PLUGINS_DESC"],	funct = uinstallp_callback },
+		{ text = LANGUAGE["MENU_PSVITA_INSTALL_SD2VITA"],	desc = LANGUAGE["MENU_PSVITA_INSTALL_SD2VITA_DESC"],	funct = sd2vita_callback },
 	}
+	if tonumber(cont_global:get()) == 0 then
+		table.insert(menu, { text = LANGUAGE["MENU_PSVITA_CHECK_ONLINE_PLUGINS"],	desc = LANGUAGE["MENU_PSVITA_CHECK_ONLINE_PLUGINS_DESC"],	funct = onlineplugins_callback } )
+	else
+		table.insert(menu, { text = LANGUAGE["MENU_PSVITA_CHECK_ONLINE_PLUGINS"].." ( "..tostring(cont_global:get()).." )",	desc = LANGUAGE["MENU_PSVITA_CHECK_ONLINE_PLUGINS_DESC"],	funct = onlineplugins_callback } )
+	end
+
 	local scroll = newScroll(menu,#menu)
 	local xscroll = 10
 
@@ -60,7 +64,6 @@ function menu_ps()
 		if change then buttons.homepopup(0) else buttons.homepopup(1) end
 
 		if back then back:blit(0,0) end
-		--if psvita then psvita:blit(0,64,45) end
 
 		draw.offsetgradrect(0,0,960,55,color.blue:a(85),color.blue:a(85),0x0,0x0,20)
 		screen.print(480,20,LANGUAGE["MENU_PSVITA_TITLE"],1.2,color.white,0x0,__ACENTER)
@@ -89,4 +92,3 @@ function menu_ps()
 
 	end
 end
-
